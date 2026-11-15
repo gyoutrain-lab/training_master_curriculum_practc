@@ -1,0 +1,2943 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Master Kurikulum 640 JPL & Sertifikat Motif Gelombang Lengkap - BP3MI Aceh & AKPER Fakinah</title>
+    
+    <!-- Google Fonts for High-End Academic Certificate & UI Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+
+    <!-- Open Graph / Social Media Metadata -->
+    <meta property="og:title" content="Sistem Master Kurikulum 640 JPL & Sertifikat Motif Gelombang Lengkap - BP3MI Aceh">
+    <meta property="og:description" content="Aplikasi terintegrasi Presensi, Rekap Nilai, Penilaian Praktik NCL, Transkrip Akademik 1 Halaman, dan Sertifikat Kelulusan & Instruktur Resmi.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/gyoutrain-lab/BP3MI_Fakinah_Master_Curriculum/main/ClassCert.jpg">
+    <meta property="og:type" content="website">
+
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #0d9488;
+            --bg-color: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --border-color: #cbd5e1;
+            --gold-primary: #b8860b;
+            --gold-dark: #785210;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 10px;
+            width: 100vw;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+        }
+
+        .locked-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #0d9488 100%);
+            color: white;
+            padding: 22px 26px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
+        }
+
+        .locked-header h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            padding-bottom: 8px;
+            color: white !important;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+
+        .header-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            font-size: 0.92rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .mode-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            padding: 9px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+            font-family: 'Montserrat', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-btn:hover {
+            background: #cbd5e1;
+            transform: translateY(-1px);
+        }
+
+        .nav-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(30, 58, 138, 0.3);
+        }
+
+        .view-section {
+            display: none;
+            width: 100%;
+        }
+
+        .view-section.active-view {
+            display: block;
+        }
+
+        .session-control-box {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            align-items: center;
+        }
+
+        .control-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .control-group input, .control-group select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.88rem;
+        }
+
+        .filter-report-box {
+            background: #f0fdf4;
+            border: 1px solid #10b981;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .schedule-timeline-box {
+            background: #fdf8f6;
+            border: 1px solid #f97316;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .schedule-timeline-box h4 {
+            margin: 0 0 10px 0;
+            color: #c2410c;
+            font-size: 0.95rem;
+            border-bottom: 1px dashed #fed7aa;
+            padding-bottom: 6px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .operator-lock-banner {
+            background: #fffbeb;
+            border: 1px solid #f59e0b;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-unlock {
+            background: #d97706;
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+
+        .btn-unlock:hover {
+            background: #b45309;
+        }
+
+        .operator-review-panel {
+            background: #eff6ff;
+            border: 1px solid #3b82f6;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .review-status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 10px;
+            max-height: 320px;
+            overflow-y: auto;
+            background: white;
+            padding: 12px;
+            border: 1px solid #bfdbfe;
+            border-radius: 6px;
+            font-size: 0.8rem;
+        }
+
+        h3 {
+            color: var(--primary-color);
+            margin-top: 15px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 6px;
+            font-size: 1.1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+
+        .presence-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            background: white;
+        }
+
+        .presence-table th, .presence-table td {
+            border: 1px solid var(--border-color);
+            padding: 8px 10px;
+            vertical-align: middle;
+        }
+
+        .presence-table th {
+            background-color: #f1f5f9;
+            color: var(--primary-color);
+            text-align: center;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .student-number { text-align: center; font-weight: bold; width: 35px; }
+        .student-name { font-weight: 600; min-width: 160px; }
+        .phone-input { 
+            width: 140px; 
+            padding: 6px 8px; 
+            border: 1px solid #0d9488; 
+            border-radius: 4px; 
+            font-size: 0.82rem; 
+            background-color: #f0fdf4;
+            color: #065f46;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .phone-input:focus {
+            outline: none;
+            border-color: #1e3a8a;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.2);
+        }
+        .score-input { width: 65px; padding: 6px; text-align: center; font-weight: bold; border: 1px solid #10b981; border-radius: 4px; background: #f0fdf4; color: #065f46; }
+        .checkbox-center { text-align: center; width: 60px; }
+        .attendance-checkbox { width: 18px; height: 18px; accent-color: var(--secondary-color); cursor: pointer; }
+        .sig-cell { text-align: center; width: 180px; }
+
+        .individual-canvas {
+            border: 1px dashed #94a3b8;
+            background: #fafafa;
+            cursor: crosshair;
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+            height: 50px;
+            border-radius: 4px;
+            touch-action: none;
+        }
+
+        .btn-action-group { display: flex; gap: 4px; justify-content: center; margin-top: 4px; }
+        .btn-sig-save { background: #059669; color: white; border: none; padding: 4px 9px; border-radius: 4px; cursor: pointer; font-size: 0.78rem; font-weight: bold; }
+        .btn-sig-edit { background: #d97706; color: white; border: none; padding: 4px 9px; border-radius: 4px; cursor: pointer; font-size: 0.78rem; font-weight: bold; }
+        .btn-sig-clear { background: #ef4444; color: white; border: none; padding: 4px 9px; border-radius: 4px; cursor: pointer; font-size: 0.78rem; font-weight: bold; }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn-export { background-color: var(--secondary-color); color: white; border: none; padding: 9px 18px; border-radius: 6px; font-size: 0.88rem; cursor: pointer; font-weight: bold; font-family: 'Montserrat', sans-serif; transition: background 0.2s; }
+        .btn-export:hover { background-color: #0f766e; }
+        
+        .btn-doc { background-color: #2563eb; color: white; border: none; padding: 9px 18px; border-radius: 6px; font-size: 0.88rem; cursor: pointer; font-weight: bold; font-family: 'Montserrat', sans-serif; transition: background 0.2s; }
+        .btn-doc:hover { background-color: #1d4ed8; }
+
+        .btn-save-sub { background-color: #059669; color: white; border: none; padding: 6px 14px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; font-weight: bold; margin-top: 2px; }
+        .btn-edit-journal { background-color: #d97706; color: white; border: none; padding: 5px 10px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; font-weight: bold; margin-right: 4px; }
+        .btn-save-journal { background-color: #059669; color: white; border: none; padding: 5px 10px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; font-weight: bold; }
+
+        .alert-box {
+            background: #fffbeb;
+            border: 1px solid #fcd34d;
+            color: #92400e;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .rubric-table th, .rubric-table td { font-size: 0.82rem; padding: 6px; }
+        .rubric-table th { background-color: #e2e8f0; }
+
+        .badge-distinction { background: #dcfce7; color: #15803d; font-weight: bold; padding: 3px 8px; border-radius: 4px; font-size: 0.72rem; border: 1px solid #86efac; }
+        .badge-merit { background: #dbeafe; color: #1e40af; font-weight: bold; padding: 3px 8px; border-radius: 4px; font-size: 0.72rem; border: 1px solid #93c5fd; }
+        .badge-pass { background: #fef9c3; color: #a16207; font-weight: bold; padding: 3px 8px; border-radius: 4px; font-size: 0.72rem; border: 1px solid #fde047; }
+        .badge-need { background: #fee2e2; color: #b91c1c; font-weight: bold; padding: 3px 8px; border-radius: 4px; font-size: 0.72rem; border: 1px solid #fca5a5; }
+
+        /* Transkrip Nilai 1 Halaman */
+        .transcript-card {
+            background: #ffffff;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin-top: 15px;
+            width: 100%;
+        }
+        .transcript-header-title { text-align: center; border-bottom: 2px double var(--primary-color); padding-bottom: 8px; margin-bottom: 12px; }
+        .transcript-header-title h2 { margin: 0; color: var(--primary-color); font-size: 1.15rem; text-transform: uppercase; letter-spacing: 0.5px; font-family: 'Montserrat', sans-serif; }
+        .transcript-header-title p { margin: 4px 0 0 0; font-size: 0.78rem; color: #475569; font-weight: 600; }
+
+        .transcript-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; }
+        .transcript-table th, .transcript-table td { border: 1px solid #cbd5e1; padding: 5px 6px; vertical-align: middle; }
+        .transcript-table th { background-color: #f1f5f9; color: var(--primary-color); text-align: center; font-size: 0.82rem; font-family: 'Montserrat', sans-serif; }
+
+        /* OFFICIAL ACADEMIC CERTIFICATE */
+        .certificate-card {
+            background: #fffdf9;
+            border: 12px double #1e3a8a;
+            outline: 3px solid #b8860b;
+            outline-offset: -18px;
+            padding: 24px 36px;
+            margin: 15px auto;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            width: 100%;
+            max-width: 1050px;
+            aspect-ratio: 297 / 210;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .cert-corner-rosette {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            z-index: 3;
+            pointer-events: none;
+            opacity: 0.25;
+        }
+        .cert-corner-tl { top: 22px; left: 22px; }
+        .cert-corner-tr { top: 22px; right: 22px; transform: rotate(90deg); }
+        .cert-corner-bl { bottom: 22px; left: 22px; transform: rotate(-90deg); }
+        .cert-corner-br { bottom: 22px; right: 22px; transform: rotate(180deg); }
+
+        .guilloche-waves-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.18;
+        }
+
+        .cert-content-wrapper {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cert-header-table { 
+            width: 100%; 
+            border: none; 
+            margin-bottom: 4px;
+            border-bottom: 1.5px solid rgba(184, 134, 11, 0.4);
+            padding-bottom: 8px;
+        }
+        .cert-header-table td { border: none; vertical-align: middle; }
+        
+        .cert-org-title { 
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem; 
+            font-weight: 800; 
+            color: #1e3a8a; 
+            text-transform: uppercase; 
+            letter-spacing: -0.1px; 
+            margin-bottom: 3px;
+        }
+        .cert-subtitle { 
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.76rem; 
+            color: #475569; 
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+        
+        .cert-main-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 6px;
+            margin: 4px 0 2px 0;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(1px 2px 2px rgba(120, 82, 16, 0.3));
+        }
+
+        .cert-no-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            color: #475569;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            margin-bottom: 6px;
+        }
+
+        .cert-recipient-block {
+            margin-top: 10px;
+        }
+
+        .cert-body-text { 
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem; 
+            color: #334155; 
+            font-style: italic;
+            font-weight: 600;
+            margin-bottom: 4px; 
+        }
+
+        .cert-recipient-name {
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            border-bottom: 2px solid #b8860b;
+            display: inline-block;
+            padding: 0 24px 4px 24px;
+            margin: 4px auto 12px auto;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.8px;
+        }
+        
+        .cert-desc {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.84rem;
+            line-height: 1.5;
+            color: #1e293b;
+            max-width: 920px;
+            margin: 0 auto 10px auto;
+            text-align: center;
+        }
+
+        .cert-badge-container {
+            margin: 6px 0 12px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cert-signatures-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            margin-top: auto;
+            padding-top: 6px;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cert-sig-box { padding: 0; }
+        .cert-sig-space { height: 42px; } 
+        .cert-sig-name { font-weight: 700; color: #1e3a8a; text-decoration: underline; margin-top: 2px; font-size: 0.92rem; }
+        .cert-sig-role { font-size: 0.75rem; color: #475569; margin-top: 2px; font-weight: 600; }
+
+        /* PRECISE PRINT CSS SETUP */
+        @page {
+            size: A4 landscape;
+            margin: 0;
+        }
+
+        @media print {
+            html, body {
+                width: 297mm !important;
+                height: 210mm !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                background: white !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body > .container > *:not(#viewCertificate):not(#viewInstCert):not(#viewTranscript):not(#viewScoreRecap):not(#viewPractical):not(#viewGrowth):not(#viewWeekly):not(#viewJournal):not(#viewMonthly),
+            .locked-header,
+            .mode-nav,
+            .session-control-box,
+            .operator-lock-banner,
+            .operator-review-panel,
+            .actions,
+            .btn-action-group,
+            .filter-report-box,
+            .btn-save-sub,
+            .btn-edit-journal,
+            .btn-save-journal,
+            h3, p {
+                display: none !important;
+            }
+
+            .container {
+                box-shadow: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+                width: 297mm !important;
+                height: 210mm !important;
+                background: transparent !important;
+            }
+
+            #viewCertificate.active-view, #viewInstCert.active-view {
+                display: block !important;
+                width: 297mm !important;
+                height: 210mm !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .certificate-card {
+                border: 12px double #1e3a8a !important;
+                outline: 3px solid #b8860b !important;
+                outline-offset: -18px !important;
+                padding: 10mm 16mm !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+                background: #fffdf9 !important;
+                width: 297mm !important;
+                height: 210mm !important;
+                max-width: 297mm !important;
+                max-height: 210mm !important;
+                page-break-inside: avoid !important;
+                page-break-after: always !important;
+            }
+
+            .transcript-card {
+                border: 2px solid #1e3a8a !important;
+                padding: 8px 12px !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+                background: white !important;
+                page-break-inside: avoid;
+                max-height: 200mm;
+                overflow: hidden;
+            }
+
+            .transcript-table th, .transcript-table td {
+                padding: 2px 4px !important;
+                font-size: 6.8pt !important;
+            }
+
+            tr { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="locked-header">
+        <h2>BP3MI Aceh & AKPER Fakinah Banda Aceh</h2>
+        <div class="header-grid">
+            <div><strong>Program:</strong> Master Kurikulum 640 JPL</div>
+            <div><strong>Instruktur:</strong> <span id="displayInstructor">Giyono Asfarrasyid</span></div>
+            <div><strong>Sisa Target JPL:</strong> <span id="displayRemainingJpl" style="font-weight:bold; color:#fde047;">640 JPL</span></div>
+        </div>
+    </div>
+
+    <div class="mode-nav">
+        <button class="nav-btn active" id="btnLive" onclick="switchView('live')">🔴 Live Presensi & Tanda Tangan</button>
+        <button class="nav-btn" id="btnScoreRecap" onclick="switchView('scoreRecap')">🏆 Recap Nilai & Tanda Tangan Ujian</button>
+        <button class="nav-btn" id="btnPractical" onclick="switchView('practical')">📝 Penilaian Praktik (NCL Rubric)</button>
+        <button class="nav-btn" id="btnGrowth" onclick="switchView('growth')">📈 Rekap Pre/Post & Growth</button>
+        <button class="nav-btn" id="btnTranscript" onclick="switchView('transcript')">🎓 Transkrip Nilai Akhir</button>
+        <button class="nav-btn" id="btnCertificate" onclick="switchView('certificate')">📜 Cetak Sertifikat Resmi</button>
+        <button class="nav-btn" id="btnInstCert" onclick="switchView('instCert')">📜 Cetak Sertifikat Instruktur</button>
+        <button class="nav-btn" id="btnWeekly" onclick="switchView('weekly')">📅 Master Tabel Kurikulum</button>
+        <button class="nav-btn" id="btnJournal" onclick="switchView('journal')">📖 Jurnal KBM & Progress</button>
+        <button class="nav-btn" id="btnMonthly" onclick="switchView('monthly')">📊 Monthly Report & Rekap</button>
+    </div>
+
+    <!-- VIEW 1: LIVE PRESENSI -->
+    <div id="viewLive" class="view-section active-view">
+        <div class="alert-box">
+            <span>🔒 <strong>Status Sistem:</strong> Penyimpanan Permanen Aktif. Data tersimpan di memori browser secara otomatis dan aman dari timpaan.</span>
+            <button class="nav-btn" onclick="switchView('weekly')" style="padding: 4px 10px; font-size:0.78rem;">🔍 Lihat Tabel Master</button>
+        </div>
+
+        <div class="session-control-box">
+            <div class="control-group">
+                <label>Tanggal & Waktu Sistem (Live):</label>
+                <input type="text" id="liveDate" readonly style="background:#e2e8f0; font-weight:bold; color:#1e3a8a;">
+            </div>
+            <div class="control-group">
+                <label>Kompetensi Sesuai Alokasi:</label>
+                <select id="liveSector" style="background:#e2e8f0;" disabled onchange="handleLiveSectorChange()"></select>
+            </div>
+            <div class="control-group">
+                <label>Alokasi Waktu Harian:</label>
+                <input type="text" value="08.00 - 16.30 WIB (10 JPL) / Minggu (5-6 JPL)" readonly style="background:#e2e8f0; font-weight:bold; color:#047857;">
+            </div>
+        </div>
+
+        <div id="weekdayContentWrapper">
+            <div class="operator-lock-banner" id="operatorLockBanner">
+                <div><strong>🔒 Akses Kontrol:</strong> Masukkan sandi operator untuk membuka/mengubah Kompetensi & Sub-Pokok Bahasan. Sandi default: <code>Fakinah_1</code></div>
+                <button class="btn-unlock" onclick="unlockOperatorMode()">🔓 Masukkan Sandi Operator</button>
+            </div>
+
+            <div class="operator-review-panel" id="operatorReviewPanel">
+                <h4>👀 Panel Monitoring Status Tanda Tangan & No HP Peserta:</h4>
+                <div class="review-status-grid" id="reviewStatusGrid"></div>
+            </div>
+
+            <h3>Formulir Kehadiran, Nomor HP & Tanda Tangan Digital Peserta</h3>
+
+            <div class="table-responsive">
+                <table class="presence-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Peserta Perawat</th>
+                            <th>No. HP / WhatsApp</th>
+                            <th class="checkbox-center">Hadir (✔)</th>
+                            <th>Tanda Tangan Digital & Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="liveRosterBody"></tbody>
+                </table>
+            </div>
+
+            <div class="actions">
+                <span style="font-size: 0.85rem; color: #166534; font-weight: bold;" id="liveMsg">Setiap peserta dapat mengisikan nomor HP dan menyimpan tanda tangan mandiri.</span>
+                <button class="btn-export" onclick="saveAndRecordSession()">💾 Simpan Sesi Keseluruhan & Arsip Cloud</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW RECAP NILAI UJIAN -->
+    <div id="viewScoreRecap" class="view-section">
+        <h3>🏆 Recap Nilai Ujian per Kompetensi & Tanda Tangan Peserta</h3>
+        <p style="font-size: 0.88rem; color: #475569;">Fasilitas rekap nilai ujian per modul kompetensi. Data yang disimpan akan langsung terintegrasi.</p>
+        
+        <div class="filter-report-box">
+            <div style="flex: 1; min-width: 280px;">
+                <label style="font-size: 0.8rem; font-weight: bold; color: #065f46; display: block; margin-bottom: 4px;">Pilih Kompetensi / Modul Ujian:</label>
+                <select id="scoreRecapSectorSelect" onchange="renderScoreRecapTable()" style="width: 100%; padding: 7px; border: 1px solid #10b981; border-radius: 4px; font-size: 0.88rem;"></select>
+            </div>
+            <div>
+                <button class="btn-export" onclick="saveScoreRecapData()" style="margin-top: 18px;">🔒 SIMPAN PERMANEN REKAP MODUL INI</button>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="presence-table">
+                <thead>
+                    <tr>
+                        <th style="width: 45px;">No</th>
+                        <th>Nama Peserta Perawat</th>
+                        <th style="width: 150px;">No. HP / WhatsApp</th>
+                        <th style="width: 110px;">Nilai Ujian (0-100)</th>
+                        <th>Tanda Tangan Ujian (Save / Edit / Clear)</th>
+                    </tr>
+                </thead>
+                <tbody id="scoreRecapRosterBody"></tbody>
+            </table>
+        </div>
+
+        <div class="actions">
+            <span style="font-size: 0.85rem; color: #065f46; font-weight: bold;" id="scoreRecapMsg">Data nilai dan tanda tangan teruji tersimpan per modul.</span>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="btn-doc" onclick="exportScoreRecapToWord()">📄 Export Recap Nilai ke Doc (Word)</button>
+                <button class="btn-export" onclick="window.print()">🖨️ Print Recap Nilai</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW PENILAIAN PRAKTIK NCL -->
+    <div id="viewPractical" class="view-section">
+        <h3>📝 Assessment of Conversational English (Formulir Penilaian Praktik - Rujukan NCL)</h3>
+        <p style="font-size: 0.88rem; color: #475569;">Format Lembar Penilaian Praktik percakapan bahasa Inggris berdasarkan 5 indikator kompetensi @ Bobot 20% (Total Skala 100).</p>
+
+        <div class="filter-report-box">
+            <div style="flex: 1; min-width: 240px;">
+                <label style="font-size: 0.8rem; font-weight: bold; color: #065f46; display: block; margin-bottom: 4px;">1. Pilih Nama Peserta Perawat:</label>
+                <select id="nclStudentSelect" onchange="loadNclAssessmentData()" style="width: 100%; padding: 7px; border: 1px solid #10b981; border-radius: 4px; font-size: 0.88rem;"></select>
+            </div>
+            <div style="flex: 1.5; min-width: 280px;">
+                <label style="font-size: 0.8rem; font-weight: bold; color: #065f46; display: block; margin-bottom: 4px;">2. Pilih Nama Kompetensi Yang Dipraktikkan:</label>
+                <select id="nclSectorSelect" onchange="loadNclAssessmentData()" style="width: 100%; padding: 7px; border: 1px solid #10b981; border-radius: 4px; font-size: 0.88rem;"></select>
+            </div>
+            <div style="width: 120px;">
+                <label style="font-size: 0.8rem; font-weight: bold; color: #065f46; display: block; margin-bottom: 4px;">Group / Kelas:</label>
+                <input type="text" id="nclGroupInput" value="Fl-414" style="width: 100%; padding: 7px; border: 1px solid #10b981; border-radius: 4px; font-size: 0.88rem;">
+            </div>
+        </div>
+
+        <div style="background:#ffffff; border: 1px solid var(--border-color); border-radius: 8px; padding: 15px; margin-bottom: 20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid var(--primary-color); padding-bottom:8px; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                <h4 style="margin:0; color:var(--primary-color);">Lembar Evaluasi Mandiri: <span id="nclStudentDisplayName" style="color:#d97706;">-</span></h4>
+                <div style="font-size:1.1rem; font-weight:bold; color:#065f46; background:#d1fae5; padding:6px 14px; border-radius:6px; border:1px solid #10b981;">
+                    TOTAL NILAI (Skala 100): <span id="nclTotalScoreDisplay">0</span> / 100
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="presence-table rubric-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 140px;">Segi Kompetensi</th>
+                            <th style="width: 70px;">Bobot</th>
+                            <th>Level 1 (20)</th>
+                            <th>Level 2 (40)</th>
+                            <th>Level 3 (60)</th>
+                            <th>Level 4 (80)</th>
+                            <th>Level 5 (100)</th>
+                            <th style="width: 100px;">Pilihan Skor</th>
+                            <th style="width: 100px;">Nilai Akhir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. Comprehension</strong></td>
+                            <td style="text-align:center; font-weight:bold;">20%</td>
+                            <td>Cannot understand simple conversation</td>
+                            <td>Has great difficulty following what is said</td>
+                            <td>Understands most at slower speed</td>
+                            <td>Understands most at normal speed</td>
+                            <td>Understands all conversations accurately</td>
+                            <td style="text-align:center;">
+                                <select id="score_comp" onchange="calculateNclTotal()" style="padding:4px; font-weight:bold; width:100%;">
+                                    <option value="1">1 (20)</option>
+                                    <option value="2">2 (40)</option>
+                                    <option value="3" selected>3 (60)</option>
+                                    <option value="4">4 (80)</option>
+                                    <option value="5">5 (100)</option>
+                                </select>
+                            </td>
+                            <td style="text-align:center; font-weight:bold; color:#1e3a8a;" id="val_comp">12.0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Fluency</strong></td>
+                            <td style="text-align:center; font-weight:bold;">20%</td>
+                            <td>Speech halting & fragmentary</td>
+                            <td>Usually hesitant & forced into silence</td>
+                            <td>Conversation frequently disrupted</td>
+                            <td>Conducts conversation without disruption</td>
+                            <td>Conducts fluent conversation smoothly</td>
+                            <td style="text-align:center;">
+                                <select id="score_flu" onchange="calculateNclTotal()" style="padding:4px; font-weight:bold; width:100%;">
+                                    <option value="1">1 (20)</option>
+                                    <option value="2">2 (40)</option>
+                                    <option value="3" selected>3 (60)</option>
+                                    <option value="4">4 (80)</option>
+                                    <option value="5">5 (100)</option>
+                                </select>
+                            </td>
+                            <td style="text-align:center; font-weight:bold; color:#1e3a8a;" id="val_flu">12.0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. Vocabulary</strong></td>
+                            <td style="text-align:center; font-weight:bold;">20%</td>
+                            <td>Vocabulary limitations extreme</td>
+                            <td>Misuse of words & very limited</td>
+                            <td>Frequently uses wrong words</td>
+                            <td>Occasionally uses wrong word</td>
+                            <td>Accurate word choice in general</td>
+                            <td style="text-align:center;">
+                                <select id="score_vocab" onchange="calculateNclTotal()" style="padding:4px; font-weight:bold; width:100%;">
+                                    <option value="1">1 (20)</option>
+                                    <option value="2">2 (40)</option>
+                                    <option value="3" selected>3 (60)</option>
+                                    <option value="4">4 (80)</option>
+                                    <option value="5">5 (100)</option>
+                                </select>
+                            </td>
+                            <td style="text-align:center; font-weight:bold; color:#1e3a8a;" id="val_vocab">12.0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. Pronunciation</strong></td>
+                            <td style="text-align:center; font-weight:bold;">20%</td>
+                            <td>Speech unintelligible</td>
+                            <td>Very hard to understand</td>
+                            <td>Occasionally leads to misunderstanding</td>
+                            <td>Minor errors without impact to meaning</td>
+                            <td>Clear and accurate pronunciation</td>
+                            <td style="text-align:center;">
+                                <select id="score_pron" onchange="calculateNclTotal()" style="padding:4px; font-weight:bold; width:100%;">
+                                    <option value="1">1 (20)</option>
+                                    <option value="2">2 (40)</option>
+                                    <option value="3" selected>3 (60)</option>
+                                    <option value="4">4 (80)</option>
+                                    <option value="5">5 (100)</option>
+                                </select>
+                            </td>
+                            <td style="text-align:center; font-weight:bold; color:#1e3a8a;" id="val_pron">12.0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. Grammar</strong></td>
+                            <td style="text-align:center; font-weight:bold;">20%</td>
+                            <td>Severe errors make speech unintelligible</td>
+                            <td>Grammar errors make comprehension hard</td>
+                            <td>Errors occasionally obscure meaning</td>
+                            <td>Minor difficulties without impact</td>
+                            <td>Speaks with correct grammar</td>
+                            <td style="text-align:center;">
+                                <select id="score_gram" onchange="calculateNclTotal()" style="padding:4px; font-weight:bold; width:100%;">
+                                    <option value="1">1 (20)</option>
+                                    <option value="2">2 (40)</option>
+                                    <option value="3" selected>3 (60)</option>
+                                    <option value="4">4 (80)</option>
+                                    <option value="5">5 (100)</option>
+                                </select>
+                            </td>
+                            <td style="text-align:center; font-weight:bold; color:#1e3a8a;" id="val_gram">12.0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top:15px;">
+                <label style="font-size: 0.85rem; font-weight: bold; color: var(--primary-color);">Notes / Catatan Evaluator:</label>
+                <textarea id="nclNotesInput" rows="3" style="width: 100%; border: 1px solid var(--border-color); border-radius: 4px; padding: 8px; font-size: 0.85rem; margin-top: 4px;" placeholder="Tuliskan catatan evaluasi praktik peserta..."></textarea>
+            </div>
+        </div>
+
+        <div class="actions">
+            <span style="font-size: 0.85rem; color: #065f46; font-weight: bold;">Simpan & Cetak Hasil Penilaian Praktik:</span>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="btn-export" onclick="saveNclAssessmentData()">🔒 SIMPAN PERMANEN RUBRIK PESERTA INI</button>
+                <button class="btn-doc" onclick="exportNclToWord()">📄 Export Form NCL ke Doc (Word)</button>
+                <button class="btn-export" style="background:#1e293b;" onclick="window.print()">🖨️ Print Form Penilaian Praktik</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW REKAP PRE/POST & GROWTH SCALE -->
+    <div id="viewGrowth" class="view-section">
+        <h3>📈 Rekapitulasi Pre-Test, Post-Test, Direct Test & Growth Scale (%)</h3>
+        <p style="font-size: 0.88rem; color: #475569;">Matriks rekapitulasi tingkat perkembangan kompetensi peserta per modul.</p>
+
+        <div class="filter-report-box">
+            <div style="flex: 1; min-width: 280px;">
+                <label style="font-size: 0.8rem; font-weight: bold; color: #065f46; display: block; margin-bottom: 4px;">Pilih Modul / Kompetensi Evaluasi:</label>
+                <select id="growthSectorSelect" onchange="renderGrowthTable()" style="width: 100%; padding: 7px; border: 1px solid #10b981; border-radius: 4px; font-size: 0.88rem;"></select>
+            </div>
+            <div>
+                <button class="btn-export" onclick="saveGrowthData()" style="margin-top: 18px;">🔒 SIMPAN PERMANEN DATA MODUL INI</button>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="presence-table">
+                <thead>
+                    <tr>
+                        <th style="width: 35px;">No</th>
+                        <th>Nama Peserta Perawat</th>
+                        <th style="width: 90px;">Pre-Test (0-100)</th>
+                        <th style="width: 90px;">Post-Test (0-100)</th>
+                        <th style="width: 100px;">Direct Test (Praktik)</th>
+                        <th style="width: 110px;">Growth Scale (%)</th>
+                        <th style="width: 110px;">Nilai Akhir (Skala 100)</th>
+                        <th style="width: 140px;">Predikat Kelulusan</th>
+                    </tr>
+                </thead>
+                <tbody id="growthRosterBody"></tbody>
+            </table>
+        </div>
+
+        <div class="actions">
+            <span style="font-size: 0.85rem; color: #065f46; font-weight: bold;">Laporan Progress Perkembangan Peserta:</span>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="btn-doc" onclick="exportGrowthToWord()">📄 Export Rekap Growth ke Doc (Word)</button>
+                <button class="btn-export" onclick="window.print()">🖨️ Print Rekap Pre/Post & Growth</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW TRANSKRIP NILAI AKHIR -->
+    <div id="viewTranscript" class="view-section">
+        <h3>🎓 Transkrip Nilai Resmi Keseluruhan Kompetensi (Official Academic Transcript - 1 Halaman)</h3>
+        <p style="font-size: 0.88rem; color: #475569;">Transkrip nilai akumulatif 23 sub-kompetensi dirancang secara presisi agar muat sempurna dalam 1 halaman lanskap A4.</p>
+
+        <div class="filter-report-box">
+            <div style="flex: 1; min-width: 280px;">
+                <label style="font-size: 0.8rem; font-weight: bold; color: #065f46; display: block; margin-bottom: 4px;">Pilih Nama Peserta Untuk Transkrip Perorangan:</label>
+                <select id="transcriptStudentSelect" onchange="renderIndividualTranscript()" style="width: 100%; padding: 7px; border: 1px solid #10b981; border-radius: 4px; font-size: 0.88rem;"></select>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="btn-doc" onclick="exportTranscriptToWord()">📄 Export Transkrip Peserta ke Doc (Word)</button>
+                <button class="btn-export" onclick="window.print()">🖨️ Print Transkrip (1 Halaman)</button>
+            </div>
+        </div>
+
+        <div id="transcriptPrintArea" class="transcript-card">
+            <div class="transcript-header-title">
+                <h2>TRANSKRIP NILAI AKHIR PROGRAM (OFFICIAL ACADEMIC TRANSCRIPT)</h2>
+                <p>AKPER TEUNGKU FAKINAH BANDA ACEH & BP3MI ACEH — MASTER KURIKULUM 640 JPL</p>
+            </div>
+
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:8px; font-size:0.78rem; margin-bottom:10px; background:#f8fafc; padding:8px 10px; border-radius:6px; border:1px solid #e2e8f0;">
+                <div><strong>Nama:</strong> <span id="tsStudentName" style="color:#1e3a8a; font-weight:bold;">-</span></div>
+                <div><strong>Kontak:</strong> <span id="tsStudentPhone">-</span></div>
+                <div><strong>Total JPL:</strong> 640 JPL</div>
+                <div><strong>Rata-Rata Growth:</strong> <span id="tsAvgGrowth" style="color:#059669; font-weight:bold;">0.0%</span></div>
+                <div><strong>IPK / Nilai Akhir:</strong> <span id="tsAvgScore" style="color:#1e3a8a; font-weight:bold;">0.0 / 100</span></div>
+                <div style="grid-column: 1 / -1;"><strong>Predikat Akhir:</strong> <span id="tsFinalPredicate">-</span></div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="transcript-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 28px;">No</th>
+                            <th>Rincian 23 Kompetensi & Modul Teruji</th>
+                            <th style="width: 45px;">JPL</th>
+                            <th style="width: 55px;">Pre-Test</th>
+                            <th style="width: 55px;">Post-Test</th>
+                            <th style="width: 65px;">Direct Test</th>
+                            <th style="width: 65px;">Growth</th>
+                            <th style="width: 65px;">Nilai Akhir</th>
+                            <th style="width: 100px;">Predikat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transcriptTableBody"></tbody>
+                </table>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:15px; font-size:0.75rem;">
+                <div style="color:#475569;">
+                    * Transkrip ini diterbitkan resmi oleh Sistem Master Kurikulum BP3MI Aceh & Akper Teungku Fakinah.
+                </div>
+                <div style="text-align:center; min-width: 220px;">
+                    <div>Banda Aceh, 7 November 2026</div>
+                    <div style="font-weight:bold;">Bagian Akademik</div>
+                    <div style="height:35px;"></div>
+                    <div style="font-weight:bold; text-decoration:underline;">Rizkia Funna, M.Kep.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW CETAK SERTIFIKAT RESMI PESERTA -->
+    <div id="viewCertificate" class="view-section">
+        <h3>📜 Cetak Sertifikat Kelulusan Resmi (Certificate of Completion)</h3>
+        <p style="font-size: 0.88rem; color: #475569;">Sertifikat kelulusan resmi dengan tata letak akademis modern dan bingkai Guilloche & Rosette.</p>
+
+        <div class="filter-report-box">
+            <div style="flex: 1; min-width: 280px;">
+                <label style="font-size: 0.80rem; font-weight: bold; color: #065f46; display: block; margin-bottom: 4px;">Pilih Peserta Untuk Cetak Sertifikat:</label>
+                <select id="certStudentSelect" onchange="renderCertificateView()" style="width: 100%; padding: 7px; border: 1px solid #10b981; border-radius: 4px; font-size: 0.88rem;"></select>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="btn-doc" onclick="exportCertificateToWord()" style="margin-top: 18px;">📄 Export Sertifikat ke Doc (Word)</button>
+                <button class="btn-export" onclick="window.print()" style="margin-top: 18px;">🖨️ Print / Hardprint Sertifikat</button>
+            </div>
+        </div>
+
+        <div id="certificatePrintArea" class="certificate-card">
+            <!-- SVG CORNER ACCENTS -->
+            <svg class="cert-corner-rosette cert-corner-tl" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,10 L90,10 L90,15 L15,15 L15,90 L10,90 Z" fill="#b8860b"/>
+                <path d="M22,22 L78,22 L78,25 L25,25 L25,78 L22,78 Z" fill="#1e3a8a"/>
+                <circle cx="15" cy="15" r="4" fill="#b8860b"/>
+            </svg>
+            <svg class="cert-corner-rosette cert-corner-tr" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,10 L90,10 L90,15 L15,15 L15,90 L10,90 Z" fill="#b8860b"/>
+                <path d="M22,22 L78,22 L78,25 L25,25 L25,78 L22,78 Z" fill="#1e3a8a"/>
+                <circle cx="15" cy="15" r="4" fill="#b8860b"/>
+            </svg>
+            <svg class="cert-corner-rosette cert-corner-bl" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,10 L90,10 L90,15 L15,15 L15,90 L10,90 Z" fill="#b8860b"/>
+                <path d="M22,22 L78,22 L78,25 L25,25 L25,78 L22,78 Z" fill="#1e3a8a"/>
+                <circle cx="15" cy="15" r="4" fill="#b8860b"/>
+            </svg>
+            <svg class="cert-corner-rosette cert-corner-br" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,10 L90,10 L90,15 L15,15 L15,90 L10,90 Z" fill="#b8860b"/>
+                <path d="M22,22 L78,22 L78,25 L25,25 L25,78 L22,78 Z" fill="#1e3a8a"/>
+                <circle cx="15" cy="15" r="4" fill="#b8860b"/>
+            </svg>
+
+            <!-- GUILLOCHE BACKGROUND WAVES -->
+            <svg class="guilloche-waves-bg" viewBox="0 0 1000 700" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="waveGoldNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#1e3a8a" />
+                        <stop offset="50%" stop-color="#b8860b" />
+                        <stop offset="100%" stop-color="#0d9488" />
+                    </linearGradient>
+                </defs>
+                <path d="M 0,40 Q 250,-10 500,60 T 1000,80" fill="none" stroke="url(#waveGoldNavy)" stroke-width="0.8" />
+                <path d="M 0,65 Q 250,15 500,85 T 1000,105" fill="none" stroke="url(#waveGoldNavy)" stroke-width="1.1" />
+                <path d="M 0,660 Q 300,480 600,350 T 1000,30" fill="none" stroke="url(#waveGoldNavy)" stroke-width="1.2" />
+                <path d="M 0,610 Q 350,430 650,300 T 1000,80" fill="none" stroke="url(#waveGoldNavy)" stroke-width="0.8" />
+                <path d="M 0,560 Q 400,380 700,250 T 1000,130" fill="none" stroke="url(#waveGoldNavy)" stroke-width="1.0" />
+                <circle cx="860" cy="540" r="140" fill="none" stroke="url(#waveGoldNavy)" stroke-width="0.7" stroke-dasharray="4,4" />
+                <circle cx="860" cy="540" r="100" fill="none" stroke="url(#waveGoldNavy)" stroke-width="1.1" />
+                <circle cx="860" cy="540" r="60" fill="none" stroke="url(#waveGoldNavy)" stroke-width="0.8" />
+            </svg>
+
+            <div class="cert-content-wrapper">
+                <table class="cert-header-table">
+                    <tr>
+                        <td style="width: 85px; text-align: left;">
+                            <img src="Garuda1.png" onerror="this.onerror=null; this.src='https://placehold.co/75x75/1e3a8a/ffffff?text=GARUDA';" alt="Garuda" style="width: 75px; height: 75px; object-fit: contain;" />
+                        </td>
+                        <td style="text-align: center; padding: 0 1px;">
+                            <div class="cert-org-title">AKADEMI KEPERAWATAN TEUNGKU FAKINAH BANDA ACEH &amp; BP3MI ACEH</div>
+                            <div class="cert-subtitle">Program Peningkatan Kapasitas &amp; Kompetensi Calon Pekerja Migran Sektor Kesehatan (640 JPL)</div>
+                        </td>
+                        <td style="width: 120px; text-align: right;">
+                            <div style="display: flex; gap: 6px; justify-content: flex-end; align-items: center;">
+                                <img src="BP3MI.jpg" onerror="this.onerror=null; this.src='https://placehold.co/80x80/0d9488/ffffff?text=BP3MI';" alt="BP3MI" style="width: 80px; height: 80px; object-fit: contain; border-radius: 4px;" />
+                                <img src="Fakinah.png" onerror="this.onerror=null; this.src='https://placehold.co/50x50/1e3a8a/ffffff?text=FAKINAH';" alt="Fakinah" style="width: 50px; height: 50px; object-fit: contain; border-radius: 4px;" />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <div>
+                    <div class="cert-main-title">SERTIFIKAT KELULUSAN</div>
+                    <div class="cert-no-label">Certificate of Completion — No: <span id="certNo">001/DIR/ATF/XII/2026</span></div>
+                </div>
+
+                <div class="cert-recipient-block">
+                    <div>
+                        <div class="cert-body-text">Diberikan Dengan Bangga Kepada:</div>
+                        <div class="cert-recipient-name" id="certStudentNameDisplay">-</div>
+                    </div>
+
+                    <div class="cert-desc">
+                        Telah berhasil menyelesaikan seluruh rangkaian kurikulum intensif <strong>"Upgrading Skill" Peningkatan Kapasitas Calon Pekerja Migran Kesehatan 640 JPL</strong> serta Ujian Kompetensi (<strong>English for Specific Purposes: Prometric/SCFHS Simulation</strong> dengan <em>Safety First, Tie-Breaker, Linguistic Distractor</em> dan <em>NPSG</em>), <strong>Clinical Assessment</strong> (<em>Cases and "How to"</em>), &amp; <strong>Behavioral Technic Interview Simulation</strong> dengan pencapaian rata-rata nilai akhir sebesar <strong id="certScoreDisplay" style="color:#1e3a8a;">0.0 / 100</strong> serta predikat kelulusan:
+                    </div>
+
+                    <div class="cert-badge-container" id="certPredicateDisplay">-</div>
+                </div>
+
+                <div class="cert-signatures-grid">
+                    <div class="cert-sig-box">
+                        <div>Disahkan Oleh:</div>
+                        <div style="font-weight:700;">Ketua Pelaksana</div>
+                        <div class="cert-sig-space"></div>
+                        <div class="cert-sig-name">Zulheri, S.K.M, M.K.M.</div>
+                        <div class="cert-sig-role">NUPTK: 7433766667130652</div>
+                    </div>
+                    <div class="cert-sig-box">
+                        <div>Banda Aceh, 7 November 2026</div>
+                        <div style="font-weight:700;">Direktur AKPER Teungku Fakinah</div>
+                        <div class="cert-sig-space"></div>
+                        <div class="cert-sig-name">Nur Asiah, S.K.M, M.Pd.</div>
+                        <div class="cert-sig-role">NUPTK: 54627546552300092i</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW CETAK SERTIFIKAT INSTRUKTUR -->
+    <div id="viewInstCert" class="view-section">
+        <h3>📜 Cetak Sertifikat Instruktur (Instructor Competency Certificate)</h3>
+        <p style="font-size: 0.88rem; color: #475569;">Modul pemetaan otomatis bidang pengajaran dan pengesahan sertifikat instruktur sesuai bidang pengajaran.</p>
+
+        <div class="filter-report-box">
+            <div style="flex: 1; min-width: 280px;">
+                <label style="font-size: 0.80rem; font-weight: bold; color: #065f46; display: block; margin-bottom: 4px;">Pilih Instruktur / Pengajar:</label>
+                <select id="instSelect" onchange="renderInstructorCertificateView()" style="width: 100%; padding: 7px; border: 1px solid #10b981; border-radius: 4px; font-size: 0.88rem;"></select>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="btn-doc" onclick="exportInstCertificateToWord()" style="margin-top: 18px;">📄 Export Sertifikat Instruktur ke Doc (Word)</button>
+                <button class="btn-export" onclick="window.print()" style="margin-top: 18px;">🖨️ Print / Hardprint Sertifikat Instruktur</button>
+            </div>
+        </div>
+
+        <div id="instCertificatePrintArea" class="certificate-card">
+            <!-- SVG CORNER ACCENTS -->
+            <svg class="cert-corner-rosette cert-corner-tl" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,10 L90,10 L90,15 L15,15 L15,90 L10,90 Z" fill="#b8860b"/>
+                <path d="M22,22 L78,22 L78,25 L25,25 L25,78 L22,78 Z" fill="#1e3a8a"/>
+                <circle cx="15" cy="15" r="4" fill="#b8860b"/>
+            </svg>
+            <svg class="cert-corner-rosette cert-corner-tr" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,10 L90,10 L90,15 L15,15 L15,90 L10,90 Z" fill="#b8860b"/>
+                <path d="M22,22 L78,22 L78,25 L25,25 L25,78 L22,78 Z" fill="#1e3a8a"/>
+                <circle cx="15" cy="15" r="4" fill="#b8860b"/>
+            </svg>
+            <svg class="cert-corner-rosette cert-corner-bl" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,10 L90,10 L90,15 L15,15 L15,90 L10,90 Z" fill="#b8860b"/>
+                <path d="M22,22 L78,22 L78,25 L25,25 L25,78 L22,78 Z" fill="#1e3a8a"/>
+                <circle cx="15" cy="15" r="4" fill="#b8860b"/>
+            </svg>
+            <svg class="cert-corner-rosette cert-corner-br" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,10 L90,10 L90,15 L15,15 L15,90 L10,90 Z" fill="#b8860b"/>
+                <path d="M22,22 L78,22 L78,25 L25,25 L25,78 L22,78 Z" fill="#1e3a8a"/>
+                <circle cx="15" cy="15" r="4" fill="#b8860b"/>
+            </svg>
+
+            <!-- GUILLOCHE BACKGROUND WAVES -->
+            <svg class="guilloche-waves-bg" viewBox="0 0 1000 700" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="waveGoldNavyInst" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#1e3a8a" />
+                        <stop offset="50%" stop-color="#b8860b" />
+                        <stop offset="100%" stop-color="#0d9488" />
+                    </linearGradient>
+                </defs>
+                <path d="M 0,40 Q 250,-10 500,60 T 1000,80" fill="none" stroke="url(#waveGoldNavyInst)" stroke-width="0.8" />
+                <path d="M 0,65 Q 250,15 500,85 T 1000,105" fill="none" stroke="url(#waveGoldNavyInst)" stroke-width="1.1" />
+                <path d="M 0,660 Q 300,480 600,350 T 1000,30" fill="none" stroke="url(#waveGoldNavyInst)" stroke-width="1.2" />
+                <path d="M 0,610 Q 350,430 650,300 T 1000,80" fill="none" stroke="url(#waveGoldNavyInst)" stroke-width="0.8" />
+                <path d="M 0,560 Q 400,380 700,250 T 1000,130" fill="none" stroke="url(#waveGoldNavyInst)" stroke-width="1.0" />
+                <circle cx="860" cy="540" r="140" fill="none" stroke="url(#waveGoldNavyInst)" stroke-width="0.7" stroke-dasharray="4,4" />
+                <circle cx="860" cy="540" r="100" fill="none" stroke="url(#waveGoldNavyInst)" stroke-width="1.1" />
+                <circle cx="860" cy="540" r="60" fill="none" stroke="url(#waveGoldNavyInst)" stroke-width="0.8" />
+            </svg>
+
+            <div class="cert-content-wrapper">
+                <table class="cert-header-table">
+                    <tr>
+                        <td style="width: 85px; text-align: left;">
+                            <img src="Garuda1.png" onerror="this.onerror=null; this.src='https://placehold.co/75x75/1e3a8a/ffffff?text=GARUDA';" alt="Garuda" style="width: 75px; height: 75px; object-fit: contain;" />
+                        </td>
+                        <td style="text-align: center; padding: 0 1px;">
+                            <div class="cert-org-title">AKADEMI KEPERAWATAN TEUNGKU FAKINAH BANDA ACEH &amp; BP3MI ACEH</div>
+                            <div class="cert-subtitle">Program Peningkatan Kapasitas &amp; Kompetensi Calon Pekerja Migran Sektor Kesehatan (640 JPL)</div>
+                        </td>
+                        <td style="width: 120px; text-align: right;">
+                            <div style="display: flex; gap: 6px; justify-content: flex-end; align-items: center;">
+                                <img src="BP3MI.jpg" onerror="this.onerror=null; this.src='https://placehold.co/80x80/0d9488/ffffff?text=BP3MI';" alt="BP3MI" style="width: 80px; height: 80px; object-fit: contain; border-radius: 4px;" />
+                                <img src="Fakinah.png" onerror="this.onerror=null; this.src='https://placehold.co/50x50/1e3a8a/ffffff?text=FAKINAH';" alt="Fakinah" style="width: 50px; height: 50px; object-fit: contain; border-radius: 4px;" />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <div>
+                    <div class="cert-main-title">SERTIFIKAT INSTRUKTUR / PENGAJAR</div>
+                    <div class="cert-no-label">Instructor Certificate — No: <span id="instCertNo">001/INST/ATF/XII/2026</span></div>
+                </div>
+
+                <div class="cert-recipient-block">
+                    <div>
+                        <div class="cert-body-text">Diberikan Dengan Penghargaan Setinggi-Tingginya Kepada:</div>
+                        <div class="cert-recipient-name" id="instCertNameDisplay">-</div>
+                    </div>
+
+                    <div class="cert-desc" id="instCertDesc">
+                        <!-- Dynamic via JS -->
+                    </div>
+                </div>
+
+                <div class="cert-signatures-grid" id="instCertSignatures">
+                    <!-- Dynamic Signatures via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW MASTER KURIKULUM -->
+    <div id="viewWeekly" class="view-section">
+        <h3>📅 Master Tabel Kurikulum (27 Agu - 7 Nov 2026 | Presisi Tepat 640 JPL)</h3>
+        
+        <div class="filter-report-box">
+            <div style="flex: 1; min-width: 280px;">
+                <label style="font-size: 0.8rem; font-weight: bold; color: #065f46; display: block; margin-bottom: 4px;">Status Master Target Tepat 640 JPL (7 Nov 2026):</label>
+                <input type="text" id="targetInfoBox" readonly style="width: 100%; padding: 7px; border: 1px solid #10b981; border-radius: 4px; font-size: 0.88rem; background:#f0fdf4; font-weight:bold;">
+            </div>
+            <div style="display: flex; gap: 8px;">
+                <button class="nav-btn" style="background:#059669; color:white;" onclick="saveAllMasterData()">🔒 Save All Master Data</button>
+            </div>
+        </div>
+
+        <div class="schedule-timeline-box" style="margin-bottom: 25px;">
+            <h4>📋 Jadwal Harian Lengkap &amp; Kolom Sub-Pokok Bahasan</h4>
+            <div class="table-responsive" style="max-height: 480px; overflow-y: auto;">
+                <table class="presence-table" style="font-size: 0.8rem; margin-top: 5px;">
+                    <thead style="position: sticky; top: 0; background: #f1f5f9; z-index: 2;">
+                        <tr>
+                            <th style="width: 45px;">Hari</th>
+                            <th style="width: 95px;">Tanggal</th>
+                            <th style="width: 80px;">Hari</th>
+                            <th style="width: 210px;">Kompetensi / Modul</th>
+                            <th style="width: 220px;">Sub-Pokok Bahasan (in English)</th>
+                            <th style="width: 75px;">Aksi Save</th>
+                            <th style="width: 65px;">JPL</th>
+                            <th style="width: 120px;">Status / Akumulasi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="masterKurikulumTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="actions">
+            <span style="font-size: 0.85rem; color: #065f46; font-weight: bold;">Cetak / Ekspor Jadwal Full:</span>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="btn-doc" onclick="exportFullScheduleToWord()">📄 Export Jadwal ke Doc (Word)</button>
+                <button class="btn-export" onclick="window.print()">🖨️ Print Jadwal Master</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW JURNAL -->
+    <div id="viewJournal" class="view-section">
+        <h3>📖 Jurnal KBM &amp; Progress</h3>
+        <p style="font-size: 0.88rem; color: #475569;">Dokumen resmi jurnal capaian belajar. Sesi terkunci permanen; operator dapat mengedit ulang untuk penyesuaian JPL secara dinamis.</p>
+        
+        <div class="table-responsive" style="margin-top: 15px; margin-bottom: 20px;">
+            <table class="presence-table" style="font-size: 0.82rem;">
+                <thead>
+                    <tr>
+                        <th style="width: 45px;">Hari Ke</th>
+                        <th style="width: 100px;">Tanggal Selesai</th>
+                        <th style="width: 85px;">Hari</th>
+                        <th style="width: 210px;">Kompetensi / Modul</th>
+                        <th style="width: 220px;">Sub-Pokok Bahasan (in English)</th>
+                        <th style="width: 70px;">JPL</th>
+                        <th style="width: 120px;">Akumulasi Closed JPL</th>
+                        <th style="width: 140px;">Aksi Operator (Edit / Save)</th>
+                    </tr>
+                </thead>
+                <tbody id="journalTableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="actions">
+            <span style="font-size: 0.85rem; color: #1e3a8a; font-weight: bold;">Dokumentasi Jurnal KBM Resmi:</span>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="btn-doc" onclick="exportJournalToWord()">📄 Export Jurnal ke Doc (Word)</button>
+                <button class="btn-export" onclick="window.print()">🖨️ Print Jurnal KBM</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW MONTHLY -->
+    <div id="viewMonthly" class="view-section">
+        <h3>📊 Monthly Report &amp; Rekapitulasi (640 JPL)</h3>
+        <div class="filter-report-box">
+            <div style="flex: 1;">
+                <label style="font-size: 0.8rem; font-weight: bold; color: #065f46; display: block; margin-bottom: 4px;">Pilih Kompetensi / Sektor:</label>
+                <select id="filterMonthlySector" onchange="renderMonthlyReport()" style="width: 100%; padding: 7px; border: 1px solid #10b981; border-radius: 4px; font-size: 0.88rem;"></select>
+            </div>
+        </div>
+        <div id="monthlyJournalContainer" style="margin-bottom: 20px;"></div>
+        <div class="table-responsive">
+            <table class="presence-table">
+                <thead>
+                    <tr>
+                        <th style="width: 40px;">No</th>
+                        <th>Nama Peserta Perawat</th>
+                        <th>No. HP / WhatsApp</th>
+                        <th class="checkbox-center">Kehadiran</th>
+                        <th>Tanda Tangan Digital Tersimpan</th>
+                    </tr>
+                </thead>
+                <tbody id="monthlyRosterBody"></tbody>
+            </table>
+        </div>
+        <div class="actions">
+            <span></span>
+            <button class="btn-export" onclick="window.print()">🖨️ Cetak / Print Monthly Report</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const students = [
+        "Putri Intan Ridayana", "Elya Susanti", "Maulidar", "Anis Sagita", "Intan Sasrika", 
+        "Delfira Milda", "Safira Kemala Putri", "Rahmatillah", "Rizki Febriwanti", "Sarah Salsa Fitri", 
+        "Mirdha Rosalinda", "Fezdriani", "Miftahul Hasanah", "Qhotorun Nada Sari", "Maisarah", 
+        "Nadariah", "Irmanda Putri Safira", "Ayu Anggira Effendi", "Nadia Vonna", "Fitriani"
+    ];
+
+    const instructors = [
+        { id: "giyono", name: "Giyono Asfarrasyid", no: "001/INST/ATF/XII/2026" },
+        { id: "rizkia", name: "Ns. Nani Safuni,  M.N.G.", no: "002/INST/ATF/XII/2026" }
+    ];
+
+    const sectorsMaster = [
+        { id: "eng_pattern", name: "1.1 English Basic Pattern", totalJpl: 18, cluster: "Bahasa Inggris" },
+        { id: "eng_pos", name: "1.2 English Parts of Speech", totalJpl: 9, cluster: "Bahasa Inggris" },
+        { id: "eng_tenses", name: "1.3 English Tenses", totalJpl: 45, cluster: "Bahasa Inggris" },
+        { id: "eng_sentences", name: "1.4 English Sentences", totalJpl: 54, cluster: "Bahasa Inggris" },
+        { id: "eng_vocab", name: "1.5 Vocabulary Building", totalJpl: 36, cluster: "Bahasa Inggris" },
+        { id: "prom_intro", name: "2.1 Introduction to Prometric Test", totalJpl: 18, cluster: "Prometric & SCFHS" },
+        { id: "prom_compare", name: "2.2 SCFHS vs STR & NCLEX", totalJpl: 9, cluster: "Prometric & SCFHS" },
+        { id: "prom_facts", name: "2.3 SCFHS Facts", totalJpl: 18, cluster: "Prometric & SCFHS" },
+        { id: "prom_tech", name: "2.4 Practice Simulation: Nurse Technician", totalJpl: 36, cluster: "Prometric & SCFHS" },
+        { id: "prom_spec", name: "2.5 Practice Simulation: Nurse Specialist", totalJpl: 27, cluster: "Prometric & SCFHS" },
+        { id: "job_rationale", name: "3.1 Job Interview Rationale", totalJpl: 9, cluster: "Wawancara & Karier" },
+        { id: "job_str", name: "3.2 Behavioral STR Technique", totalJpl: 18, cluster: "Wawancara & Karier" },
+        { id: "job_selfintro", name: "3.3 Self Introduction", totalJpl: 27, cluster: "Wawancara & Karier" },
+        { id: "job_cases", name: "3.4 Most Cases & How To", totalJpl: 27, cluster: "Wawancara & Karier" },
+        { id: "job_sim", name: "3.5 Practice Job Interview Simulation", totalJpl: 18, cluster: "Wawancara & Karier" },
+        { id: "nurs_sop", name: "4.1 Nursing Care Standard Procedure", totalJpl: 9, cluster: "Klinis & SOP" },
+        { id: "nurs_daily", name: "4.2 Daily Life as a Nurse", totalJpl: 9, cluster: "Klinis & SOP" },
+        { id: "nurs_treat", name: "4.3 How to Practice Clinical Treatment", totalJpl: 63, cluster: "Klinis & SOP" },
+        { id: "nurs_ethics", name: "5. Ethics & Workplace Adaptation", totalJpl: 45, cluster: "Etika & Hukum" },
+        { id: "global_legal", name: "6. Global Mobility & Legal Compliance", totalJpl: 45, cluster: "Etika & Hukum" },
+        { id: "daily_integ", name: "7. Daily Life Integration", totalJpl: 45, cluster: "Integrasi & Portofolio" },
+        { id: "cert_port", name: "8. Certification / Portfolio", totalJpl: 27, cluster: "Integrasi & Portofolio" },
+        { id: "final_sim", name: "9. Integrated Simulation & Final Assessment", totalJpl: 28, cluster: "Integrasi & Portofolio" }
+    ];
+
+    let recordedSessions = JSON.parse(localStorage.getItem('bp3mi_attendance_cloud_v22') || '{}');
+    let studentPhones = JSON.parse(localStorage.getItem('bp3mi_student_phones_v22') || '{}');
+    let individualSignatures = JSON.parse(localStorage.getItem('bp3mi_indiv_sigs_v22') || '{}');
+    let subTopicsStore = JSON.parse(localStorage.getItem('bp3mi_subtopics_v22') || '{}');
+    let customSectorsStore = JSON.parse(localStorage.getItem('bp3mi_custom_sectors_v22') || '{}');
+    let completedDaysStore = JSON.parse(localStorage.getItem('bp3mi_completed_days_v22') || '{}');
+    let journalLockedStates = JSON.parse(localStorage.getItem('bp3mi_journal_locks_v22') || '{}');
+    let scoreRecapStore = JSON.parse(localStorage.getItem('bp3mi_score_recap_v22') || '{}');
+    let nclPracticalStore = JSON.parse(localStorage.getItem('bp3mi_ncl_practical_v22') || '{}');
+    let growthStore = JSON.parse(localStorage.getItem('bp3mi_growth_store_v22') || '{}');
+    let activeCurrentSector = localStorage.getItem('bp3mi_active_sector_v22') || "1.1 English Basic Pattern";
+    let isOperatorUnlocked = false;
+
+    let computedSchedule = [];
+
+    function generateCustomSchedule() {
+        const START_DATE = new Date('2026-08-27');
+        const TARGET_END_DATE = new Date('2026-11-07');
+        const SWITCH_DATE = new Date('2026-09-21');
+
+        START_DATE.setHours(0,0,0,0);
+        TARGET_END_DATE.setHours(0,0,0,0);
+        SWITCH_DATE.setHours(0,0,0,0);
+
+        let currDate = new Date(START_DATE);
+        let scheduleRaw = [];
+        let cumulativeForward = 0;
+
+        let sectorIdx = 0;
+        let jplInCurrentSector = 0;
+        let dayCounter = 1;
+
+        while (currDate <= TARGET_END_DATE) {
+            let dayOfWeek = currDate.getDay();
+            let isSunday = (dayOfWeek === 0);
+            let jplToday = 0;
+
+            if (currDate < SWITCH_DATE) {
+                jplToday = isSunday ? 0 : 9;
+            } else {
+                if (isSunday) {
+                    let isNovFirst = (currDate.getDate() === 1 && currDate.getMonth() === 10);
+                    jplToday = isNovFirst ? 6 : 5;
+                } else {
+                    jplToday = 10;
+                }
+            }
+
+            if (jplToday > 0) {
+                cumulativeForward += jplToday;
+                let sectorName = "";
+                let subTopicDefault = "";
+
+                if (isSunday) {
+                    sectorName = "English Drama Presentation";
+                    let endTime = (jplToday === 6) ? "12.30" : "11.45";
+                    subTopicDefault = `English Drama Presentation & Roleplay (08.00 - ${endTime} WIB / ${jplToday} JPL)`;
+                } else {
+                    let currentSec = sectorsMaster[sectorIdx];
+                    while (sectorIdx < sectorsMaster.length && jplInCurrentSector >= currentSec.totalJpl) {
+                        sectorIdx++;
+                        if (sectorIdx < sectorsMaster.length) {
+                            currentSec = sectorsMaster[sectorIdx];
+                            jplInCurrentSector = 0;
+                        }
+                    }
+
+                    if (sectorIdx < sectorsMaster.length) {
+                        sectorName = currentSec.name;
+                        jplInCurrentSector += jplToday;
+                    } else {
+                        sectorName = "9. Integrated Simulation & Final Assessment";
+                    }
+                }
+
+                let dateString = currDate.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' });
+                let dayNameStr = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"][dayOfWeek];
+
+                scheduleRaw.push({
+                    dayNum: dayCounter,
+                    dateObj: new Date(currDate),
+                    dateStr: dateString,
+                    dayName: dayNameStr,
+                    isSunday: isSunday,
+                    sector: customSectorsStore[`day_${dayCounter}`] || sectorName,
+                    subTopic: subTopicsStore[`day_${dayCounter}`] || subTopicDefault,
+                    jpl: jplToday,
+                    cumulative: cumulativeForward
+                });
+
+                dayCounter++;
+            }
+
+            currDate.setDate(currDate.getDate() + 1);
+        }
+
+        computedSchedule = scheduleRaw;
+
+        const targetBox = document.getElementById('targetInfoBox');
+        if (targetBox) {
+            targetBox.value = `27 Agu - 7 Nov 2026 | Selesai Tepat 7 Nov | Total Presisi 640 JPL`;
+        }
+    }
+
+    function initDefaultData() {
+        generateCustomSchedule();
+        computedSchedule.forEach(item => {
+            let k = `day_${item.dayNum}`;
+            if (!subTopicsStore[k] && item.subTopic) {
+                subTopicsStore[k] = item.subTopic;
+            }
+            if (journalLockedStates[k] === undefined) {
+                journalLockedStates[k] = true;
+            }
+        });
+
+        localStorage.setItem('bp3mi_subtopics_v22', JSON.stringify(subTopicsStore));
+        localStorage.setItem('bp3mi_journal_locks_v22', JSON.stringify(journalLockedStates));
+        syncCompletedDaysFromMaster();
+    }
+
+    function updateInstructorDisplay(sectorName) {
+        const instructorSpan = document.getElementById('displayInstructor');
+        if (!instructorSpan) return;
+        
+        if (sectorName.startsWith("4.1") || sectorName.startsWith("4.2") || sectorName.startsWith("4.3")) {
+            instructorSpan.innerText = "Rizkia Funna, M.Kep";
+        } else {
+            instructorSpan.innerText = "Giyono Asfarrasyid";
+        }
+    }
+
+    function handleLiveSectorChange() {
+        const liveSectorSelect = document.getElementById('liveSector');
+        if(!liveSectorSelect) return;
+        activeCurrentSector = liveSectorSelect.value;
+        localStorage.setItem('bp3mi_active_sector_v22', activeCurrentSector);
+        updateInstructorDisplay(activeCurrentSector);
+    }
+
+    function syncCompletedDaysFromMaster() {
+        completedDaysStore = {};
+        let systemCurrentDate = new Date();
+
+        computedSchedule.forEach(item => {
+            if (item.dateObj <= systemCurrentDate) {
+                let subVal = subTopicsStore[`day_${item.dayNum}`] || item.subTopic || '-';
+                let sectorVal = customSectorsStore[`day_${item.dayNum}`] || item.sector;
+                completedDaysStore[`day_${item.dayNum}`] = {
+                    day: item.dayNum,
+                    dateStr: item.dateStr,
+                    dayName: item.dayName,
+                    sector: sectorVal,
+                    subTopic: subVal,
+                    jpl: item.jpl,
+                    cumulative: item.cumulative
+                };
+            }
+        });
+        localStorage.setItem('bp3mi_completed_days_v22', JSON.stringify(completedDaysStore));
+    }
+
+    initDefaultData();
+
+    window.onload = function() {
+        try {
+            buildLiveRoster();
+            populateFilterDropdowns();
+            populateScoreRecapDropdown();
+            populateNclDropdowns();
+            populateGrowthDropdowns();
+            populateTranscriptDropdown();
+            populateCertificateDropdown();
+            populateInstructorCertDropdown();
+            renderScoreRecapTable();
+            generateMasterKurikulumTable();
+            renderJournalTable();
+            renderMonthlyReport();
+            loadNclAssessmentData();
+            renderGrowthTable();
+            renderIndividualTranscript();
+            renderCertificateView();
+            renderInstructorCertificateView();
+            updateInstructorDisplay(activeCurrentSector);
+            startLiveSystemClock();
+        } catch (err) {
+            console.warn("Inisialisasi sistem termonitor:", err);
+        }
+    };
+
+    function startLiveSystemClock() {
+        const liveDateInput = document.getElementById('liveDate');
+        if (!liveDateInput) return;
+
+        function updateClock() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateStr = now.toLocaleDateString('id-ID', options);
+            const timeStr = now.toLocaleTimeString('id-ID');
+            liveDateInput.value = `${dateStr} - ${timeStr} WIB`;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    }
+
+    function populateFilterDropdowns() {
+        const select = document.getElementById('filterMonthlySector');
+        if(!select) return;
+        select.innerHTML = `<option value="all">-- Tampilkan Semua Sesi / Kompetensi Utuh --</option>`;
+        sectorsMaster.forEach(sec => {
+            select.innerHTML += `<option value="${sec.name}">${sec.name} (${sec.totalJpl} JPL)</option>`;
+        });
+        select.innerHTML += `<option value="English Drama Presentation">English Drama Presentation (Minggu)</option>`;
+    }
+
+    function populateScoreRecapDropdown() {
+        const select = document.getElementById('scoreRecapSectorSelect');
+        if(!select) return;
+        select.innerHTML = "";
+        sectorsMaster.forEach(sec => {
+            select.innerHTML += `<option value="${sec.name}">${sec.name} (${sec.cluster})</option>`;
+        });
+        select.innerHTML += `<option value="English Drama Presentation">English Drama Presentation (Bahasa Inggris)</option>`;
+    }
+
+    function populateNclDropdowns() {
+        const studentSel = document.getElementById('nclStudentSelect');
+        const sectorSel = document.getElementById('nclSectorSelect');
+        if(!studentSel || !sectorSel) return;
+
+        studentSel.innerHTML = "";
+        students.forEach((s, idx) => {
+            studentSel.innerHTML += `<option value="${s}">${idx + 1}. ${s}</option>`;
+        });
+
+        sectorSel.innerHTML = "";
+        sectorsMaster.forEach(sec => {
+            sectorSel.innerHTML += `<option value="${sec.name}">${sec.name}</option>`;
+        });
+        sectorSel.innerHTML += `<option value="English Drama Presentation">English Drama Presentation (Roleplay)</option>`;
+    }
+
+    function populateGrowthDropdowns() {
+        const select = document.getElementById('growthSectorSelect');
+        if(!select) return;
+        select.innerHTML = "";
+        sectorsMaster.forEach(sec => {
+            select.innerHTML += `<option value="${sec.name}">${sec.name} (${sec.cluster})</option>`;
+        });
+        select.innerHTML += `<option value="English Drama Presentation">English Drama Presentation (Roleplay)</option>`;
+    }
+
+    function populateTranscriptDropdown() {
+        const select = document.getElementById('transcriptStudentSelect');
+        if(!select) return;
+        select.innerHTML = "";
+        students.forEach((s, idx) => {
+            select.innerHTML += `<option value="${s}">${idx + 1}. ${s}</option>`;
+        });
+    }
+
+    function populateCertificateDropdown() {
+        const select = document.getElementById('certStudentSelect');
+        if(!select) return;
+        select.innerHTML = "";
+        students.forEach((s, idx) => {
+            select.innerHTML += `<option value="${s}">${idx + 1}. ${s}</option>`;
+        });
+    }
+
+    function populateInstructorCertDropdown() {
+        const select = document.getElementById('instSelect');
+        if(!select) return;
+        select.innerHTML = "";
+        instructors.forEach((inst) => {
+            select.innerHTML += `<option value="${inst.name}">${inst.name}</option>`;
+        });
+    }
+
+    function renderInstructorCertificateView() {
+        const select = document.getElementById('instSelect');
+        if(!select) return;
+        const instName = select.value;
+        const nameDisplay = document.getElementById('instCertNameDisplay');
+        const noDisplay = document.getElementById('instCertNo');
+        const descDisplay = document.getElementById('instCertDesc');
+        const sigDisplay = document.getElementById('instCertSignatures');
+
+        nameDisplay.innerText = instName;
+
+        if (instName === "Giyono Asfarrasyid") {
+            noDisplay.innerText = "001/INST/ATF/XII/2026";
+            descDisplay.innerHTML = `
+                Telah memberikan kontribusi, dedikasi, dan keahlian secara penuh sebagai <strong>Lead Instructor for English, Prometric &amp; Global Mobility</strong> pada Program Peningkatan Kapasitas Calon Pekerja Migran Kesehatan 640 JPL, membawahi bidang kompetensi: <strong>English Foundation (Patterns, Tenses, Sentences, Vocab)</strong>, <strong>Prometric/SCFHS Preparation</strong>, <strong>Behavioral Job Interview</strong>, <strong>Ethics &amp; Workplace Adaptation</strong>, <strong>Global Mobility</strong>, dan <strong>Integrated Simulation</strong>.
+            `;
+            sigDisplay.innerHTML = `
+                <div class="cert-sig-box">
+                    <div>Disahkan Oleh:</div>
+                    <div style="font-weight:700;">Ketua Pelaksana</div>
+                    <div class="cert-sig-space"></div>
+                    <div class="cert-sig-name">Zulheri, S.K.M, M.K.M</div>
+                    <div class="cert-sig-role">NUPTK: 7433766667130652</div>
+                </div>
+                <div class="cert-sig-box">
+                    <div>Banda Aceh, 7 November 2026</div>
+                    <div style="font-weight:700;">Direktur AKPER Teungku Fakinah</div>
+                    <div class="cert-sig-space"></div>
+                    <div class="cert-sig-name">Nur Asiah, S.K.M, M.Pd</div>
+                    <div class="cert-sig-role">NUPTK: 54627546552300092i</div>
+                </div>
+            `;
+        } else {
+            noDisplay.innerText = "002/INST/ATF/XII/2026";
+            descDisplay.innerHTML = `
+                Telah memberikan kontribusi, dedikasi, dan keahlian secara penuh sebagai <strong>Clinical Nursing Specialist &amp; SOP Instructor</strong> pada Program Peningkatan Kapasitas Calon Pekerja Migran Kesehatan 640 JPL, membawahi bidang kompetensi: <strong>Clinical Nursing SOPs (SOP Keperawatan)</strong>, <strong>Daily Life as a Nurse</strong>, dan <strong>Clinical Treatment Practice</strong>.
+            `;
+            sigDisplay.innerHTML = `
+                <div class="cert-sig-box">
+                    <div>Disahkan Oleh:</div>
+                    <div style="font-weight:700;">Direktur AKPER Teungku Fakinah</div>
+                    <div class="cert-sig-space"></div>
+                    <div class="cert-sig-name">Nur Asiah, S.K.M, M.Pd</div>
+                    <div class="cert-sig-role">NUPTK: 54627546552300092i</div>
+                </div>
+                <div class="cert-sig-box">
+                    <div>Banda Aceh, 7 November 2026</div>
+                    <div style="font-weight:700;">Ketua Pelaksana</div>
+                    <div class="cert-sig-space"></div>
+                    <div class="cert-sig-name">Zulheri, S.K.M, M.K.M</div>
+                    <div class="cert-sig-role">NUPTK: 7433766667130652</div>
+                </div>
+            `;
+        }
+    }
+
+    function exportInstCertificateToWord() {
+        const instName = document.getElementById('instSelect').value;
+        const contentArea = document.getElementById('instCertificatePrintArea').innerHTML;
+        downloadWordDocument(`Sertifikat_Instruktur_${instName.replace(/ /g, '_')}.doc`, contentArea);
+    }
+
+    function renderIndividualTranscript() {
+        const select = document.getElementById('transcriptStudentSelect');
+        const tbody = document.getElementById('transcriptTableBody');
+        if(!select || !tbody) return;
+
+        const studentName = select.value;
+        const idx = students.indexOf(studentName);
+        
+        document.getElementById('tsStudentName').innerText = studentName;
+        document.getElementById('tsStudentPhone').innerText = studentPhones[idx] || 'Belum diisi';
+
+        tbody.innerHTML = "";
+
+        let grandScoreSum = 0;
+        let grandGrowthSum = 0;
+        let countSectors = sectorsMaster.length;
+
+        sectorsMaster.forEach((sec, sIdx) => {
+            let rowData = (growthStore[sec.name] && growthStore[sec.name][idx]) ? growthStore[sec.name][idx] : { pre: 0, post: 0, direct: 0 };
+            
+            let preVal = parseFloat(rowData.pre) || 0;
+            let postVal = parseFloat(rowData.post) || 0;
+            let directVal = parseFloat(rowData.direct) || 0;
+
+            let growthPct = (preVal > 0) ? (((postVal - preVal) / preVal) * 100) : 0;
+            let finalScore = (postVal * 0.5) + (directVal * 0.5);
+
+            grandScoreSum += finalScore;
+            grandGrowthSum += growthPct;
+
+            let predicateBadge = "";
+            if(finalScore >= 85) predicateBadge = `<span class="badge-distinction">Distinction</span>`;
+            else if(finalScore >= 75) predicateBadge = `<span class="badge-merit">Merit</span>`;
+            else if(finalScore >= 65) predicateBadge = `<span class="badge-pass">Pass</span>`;
+            else predicateBadge = `<span class="badge-need">Need Impr.</span>`;
+
+            tbody.innerHTML += `
+                <tr>
+                    <td class="student-number">${sIdx + 1}</td>
+                    <td><strong>${sec.name}</strong> <span style="font-size:0.65rem; color:#64748b;">(${sec.cluster})</span></td>
+                    <td style="text-align:center;">${sec.totalJpl}</td>
+                    <td style="text-align:center;">${preVal}</td>
+                    <td style="text-align:center; color:#1e40af; font-weight:bold;">${postVal}</td>
+                    <td style="text-align:center; color:#065f46; font-weight:bold;">${directVal}</td>
+                    <td style="text-align:center; font-weight:bold; color:${growthPct >= 0 ? '#059669' : '#dc2626'};">${growthPct >= 0 ? '+' : ''}${growthPct.toFixed(1)}%</td>
+                    <td style="text-align:center; font-weight:bold; color:#1e3a8a;">${finalScore.toFixed(0)}</td>
+                    <td style="text-align:center;">${predicateBadge}</td>
+                </tr>
+            `;
+        });
+
+        let avgScore = grandScoreSum / countSectors;
+        let avgGrowth = grandGrowthSum / countSectors;
+
+        document.getElementById('tsAvgScore').innerText = `${avgScore.toFixed(1)} / 100`;
+        document.getElementById('tsAvgGrowth').innerText = `${avgGrowth >= 0 ? '+' : ''}${avgGrowth.toFixed(1)}%`;
+
+        let finalPred = "";
+        if(avgScore >= 85) finalPred = `<span class="badge-distinction" style="font-size:0.75rem; padding:3px 8px;">SANGAT MEMUASKAN (DISTINCTION)</span>`;
+        else if(avgScore >= 75) finalPred = `<span class="badge-merit" style="font-size:0.75rem; padding:3px 8px;">MEMUASKAN (MERIT)</span>`;
+        else if(avgScore >= 65) finalPred = `<span class="badge-pass" style="font-size:0.75rem; padding:3px 8px;">LULUS (PASS)</span>`;
+        else finalPred = `<span class="badge-need" style="font-size:0.75rem; padding:3px 8px;">PERLU BIMBINGAN</span>`;
+
+        document.getElementById('tsFinalPredicate').innerHTML = finalPred;
+    }
+
+    function renderCertificateView() {
+        const select = document.getElementById('certStudentSelect');
+        if(!select) return;
+        const studentName = select.value;
+        const idx = students.indexOf(studentName);
+
+        document.getElementById('certStudentNameDisplay').innerText = studentName;
+        document.getElementById('certNo').innerText = `${String(idx + 1).padStart(3, '0')}/DIR/ATF/XII/2026`;
+
+        let grandScoreSum = 0;
+        sectorsMaster.forEach(sec => {
+            let rowData = (growthStore[sec.name] && growthStore[sec.name][idx]) ? growthStore[sec.name][idx] : { pre: 0, post: 0, direct: 0 };
+            let postVal = parseFloat(rowData.post) || 0;
+            let directVal = parseFloat(rowData.direct) || 0;
+            grandScoreSum += (postVal * 0.5) + (directVal * 0.5);
+        });
+
+        let avgScore = grandScoreSum / sectorsMaster.length;
+        document.getElementById('certScoreDisplay').innerText = `${avgScore.toFixed(1)} / 100`;
+
+        let finalPredBadge = "";
+        if(avgScore >= 85) finalPredBadge = `<span class="badge-distinction" style="font-size:0.85rem; padding:4px 12px; letter-spacing:0.5px;">SANGAT MEMUASKAN (DISTINCTION)</span>`;
+        else if(avgScore >= 75) finalPredBadge = `<span class="badge-merit" style="font-size:0.85rem; padding:4px 12px; letter-spacing:0.5px;">MEMUASKAN (MERIT)</span>`;
+        else if(avgScore >= 65) finalPredBadge = `<span class="badge-pass" style="font-size:0.85rem; padding:4px 12px; letter-spacing:0.5px;">LULUS (PASS)</span>`;
+        else finalPredBadge = `<span class="badge-need" style="font-size:0.85rem; padding:4px 12px; letter-spacing:0.5px;">PERLU BIMBINGAN</span>`;
+
+        document.getElementById('certPredicateDisplay').innerHTML = finalPredBadge;
+    }
+
+    function exportTranscriptToWord() {
+        const studentName = document.getElementById('transcriptStudentSelect').value;
+        const contentArea = document.getElementById('transcriptPrintArea').innerHTML;
+        downloadWordDocument(`Transkrip_Resmi_${studentName.replace(/ /g, '_')}.doc`, contentArea);
+    }
+
+    function exportCertificateToWord() {
+        const studentName = document.getElementById('certStudentSelect').value;
+        const contentArea = document.getElementById('certificatePrintArea').innerHTML;
+        downloadWordDocument(`Sertifikat_Resmi_${studentName.replace(/ /g, '_')}.doc`, contentArea);
+    }
+
+    function renderGrowthTable() {
+        const select = document.getElementById('growthSectorSelect');
+        const tbody = document.getElementById('growthRosterBody');
+        if(!select || !tbody) return;
+
+        const currentSec = select.value;
+        tbody.innerHTML = "";
+
+        if(!growthStore[currentSec]) growthStore[currentSec] = {};
+
+        students.forEach((name, idx) => {
+            let rowData = growthStore[currentSec][idx] || { pre: 0, post: 0, direct: 0 };
+            
+            let preVal = parseFloat(rowData.pre) || 0;
+            let postVal = parseFloat(rowData.post) || 0;
+            let directVal = parseFloat(rowData.direct) || 0;
+
+            let growthPct = (preVal > 0) ? (((postVal - preVal) / preVal) * 100) : 0;
+            let finalScore = (postVal * 0.5) + (directVal * 0.5);
+
+            let predicateBadge = "";
+            if(finalScore >= 85) predicateBadge = `<span class="badge-distinction">Sangat Memuaskan (Distinction)</span>`;
+            else if(finalScore >= 75) predicateBadge = `<span class="badge-merit">Memuaskan (Merit)</span>`;
+            else if(finalScore >= 65) predicateBadge = `<span class="badge-pass">Lulus (Pass)</span>`;
+            else predicateBadge = `<span class="badge-need">Perlu Bimbingan</span>`;
+
+            tbody.innerHTML += `
+                <tr>
+                    <td class="student-number">${idx + 1}</td>
+                    <td class="student-name">${name}</td>
+                    <td style="text-align:center;">
+                        <input type="number" min="0" max="100" class="score-input" style="background:#fff; border:1px solid #cbd5e1;" id="pre_${currentSec}_${idx}" value="${preVal}" oninput="updateGrowthSingle('${currentSec}', ${idx})">
+                    </td>
+                    <td style="text-align:center;">
+                        <input type="number" min="0" max="100" class="score-input" style="background:#eff6ff; border:1px solid #3b82f6; color:#1e40af;" id="post_${currentSec}_${idx}" value="${postVal}" oninput="updateGrowthSingle('${currentSec}', ${idx})">
+                    </td>
+                    <td style="text-align:center;">
+                        <input type="number" min="0" max="100" class="score-input" style="background:#f0fdf4; border:1px solid #10b981; color:#065f46;" id="direct_${currentSec}_${idx}" value="${directVal}" oninput="updateGrowthSingle('${currentSec}', ${idx})">
+                    </td>
+                    <td style="text-align:center; font-weight:bold; color:${growthPct >= 0 ? '#059669' : '#dc2626'};" id="growth_disp_${idx}">
+                        ${growthPct >= 0 ? '+' : ''}${growthPct.toFixed(1)}%
+                    </td>
+                    <td style="text-align:center; font-weight:bold; font-size:0.95rem; color:#1e3a8a;" id="final_disp_${idx}">
+                        ${finalScore.toFixed(0)}
+                    </td>
+                    <td style="text-align:center;" id="pred_disp_${idx}">
+                        ${predicateBadge}
+                    </td>
+                </tr>
+            `;
+        });
+    }
+
+    function updateGrowthSingle(sectorName, idx) {
+        const preInput = document.getElementById(`pre_${sectorName}_${idx}`);
+        const postInput = document.getElementById(`post_${sectorName}_${idx}`);
+        const directInput = document.getElementById(`direct_${sectorName}_${idx}`);
+
+        if(!preInput || !postInput || !directInput) return;
+
+        let preVal = parseFloat(preInput.value) || 0;
+        let postVal = parseFloat(postInput.value) || 0;
+        let directVal = parseFloat(directInput.value) || 0;
+
+        let growthPct = (preVal > 0) ? (((postVal - preVal) / preVal) * 100) : 0;
+        let finalScore = (postVal * 0.5) + (directVal * 0.5);
+
+        let growthElem = document.getElementById(`growth_disp_${idx}`);
+        let finalElem = document.getElementById(`final_disp_${idx}`);
+        let predElem = document.getElementById(`pred_disp_${idx}`);
+
+        if(growthElem) {
+            growthElem.innerText = `${growthPct >= 0 ? '+' : ''}${growthPct.toFixed(1)}%`;
+            growthElem.style.color = growthPct >= 0 ? '#059669' : '#dc2626';
+        }
+        if(finalElem) finalElem.innerText = finalScore.toFixed(0);
+
+        if(predElem) {
+            if(finalScore >= 85) predElem.innerHTML = `<span class="badge-distinction">Sangat Memuaskan (Distinction)</span>`;
+            else if(finalScore >= 75) predElem.innerHTML = `<span class="badge-merit">Memuaskan (Merit)</span>`;
+            else if(finalScore >= 65) predElem.innerHTML = `<span class="badge-pass">Lulus (Pass)</span>`;
+            else predElem.innerHTML = `<span class="badge-need">Perlu Bimbingan</span>`;
+        }
+
+        if(!growthStore[sectorName]) growthStore[sectorName] = {};
+        growthStore[sectorName][idx] = { pre: preVal, post: postVal, direct: directVal };
+
+        renderIndividualTranscript();
+        renderCertificateView();
+    }
+
+    function saveGrowthData() {
+        const select = document.getElementById('growthSectorSelect');
+        if(!select) return;
+        const currentSec = select.value;
+
+        students.forEach((_, idx) => {
+            const preInput = document.getElementById(`pre_${currentSec}_${idx}`);
+            const postInput = document.getElementById(`post_${currentSec}_${idx}`);
+            const directInput = document.getElementById(`direct_${currentSec}_${idx}`);
+
+            if(preInput && postInput && directInput) {
+                if(!growthStore[currentSec]) growthStore[currentSec] = {};
+                growthStore[currentSec][idx] = {
+                    pre: parseFloat(preInput.value) || 0,
+                    post: parseFloat(postInput.value) || 0,
+                    direct: parseFloat(directInput.value) || 0
+                };
+            }
+        });
+
+        localStorage.setItem('bp3mi_growth_store_v22', JSON.stringify(growthStore));
+        renderIndividualTranscript();
+        renderCertificateView();
+        alert(`🔒 Data Pre, Post, & Direct Test untuk modul "${currentSec}" telah tersimpan permanen!`);
+    }
+
+    function exportGrowthToWord() {
+        const select = document.getElementById('growthSectorSelect');
+        if(!select) return;
+        const currentSec = select.value;
+
+        let tableRows = "";
+        students.forEach((name, idx) => {
+            let rowData = (growthStore[currentSec] && growthStore[currentSec][idx]) ? growthStore[currentSec][idx] : { pre: 0, post: 0, direct: 0 };
+            let preVal = parseFloat(rowData.pre) || 0;
+            let postVal = parseFloat(rowData.post) || 0;
+            let directVal = parseFloat(rowData.direct) || 0;
+
+            let growthPct = (preVal > 0) ? (((postVal - preVal) / preVal) * 100) : 0;
+            let finalScore = (postVal * 0.5) + (directVal * 0.5);
+
+            let predText = "Pass";
+            if(finalScore >= 85) predText = "Distinction (Sangat Memuaskan)";
+            else if(finalScore >= 75) predText = "Merit (Memuaskan)";
+            else if(finalScore >= 65) predText = "Pass (Lulus)";
+            else predText = "Need Improvement";
+
+            tableRows += `
+                <tr>
+                    <td style="text-align:center;">${idx + 1}</td>
+                    <td>${name}</td>
+                    <td style="text-align:center;">${preVal}</td>
+                    <td style="text-align:center;">${postVal}</td>
+                    <td style="text-align:center;">${directVal}</td>
+                    <td style="text-align:center;">${growthPct >= 0 ? '+' : ''}${growthPct.toFixed(1)}%</td>
+                    <td style="text-align:center; font-weight:bold;">${finalScore.toFixed(0)}</td>
+                    <td style="text-align:center;">${predText}</td>
+                </tr>
+            `;
+        });
+
+        let content = `
+            <h2>BP3MI Aceh & AKPER Teungku Fakinah Banda Aceh</h2>
+            <h3>REKAPITULASI PRE-TEST, POST-TEST, DIRECT TEST & GROWTH SCALE (%)</h3>
+            <p><strong>Kompetensi / Modul Evaluasi:</strong> ${currentSec}</p>
+            <p><strong>Tanggal Unduh:</strong> ${new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' })}</p>
+            <table border="1" style="border-collapse:collapse; width:100%; font-size:10pt;">
+                <thead>
+                    <tr style="background-color:#f2f2f2;">
+                        <th style="width:35px;">No</th>
+                        <th>Nama Peserta Perawat</th>
+                        <th>Pre-Test</th>
+                        <th>Post-Test</th>
+                        <th>Direct Test</th>
+                        <th>Growth Scale (%)</th>
+                        <th>Nilai Akhir (Skala 100)</th>
+                        <th>Predikat Kelulusan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${tableRows}
+                </tbody>
+            </table>
+        `;
+
+        const filename = `Rekap_Growth_PrePost_${currentSec.replace(/[^a-zA-Z0-9]/g, '_')}.doc`;
+        downloadWordDocument(filename, content);
+    }
+
+    function calculateNclTotal() {
+        const c = parseInt(document.getElementById('score_comp').value) * 20;
+        const f = parseInt(document.getElementById('score_flu').value) * 20;
+        const v = parseInt(document.getElementById('score_vocab').value) * 20;
+        const p = parseInt(document.getElementById('score_pron').value) * 20;
+        const g = parseInt(document.getElementById('score_gram').value) * 20;
+
+        document.getElementById('val_comp').innerText = (c * 0.2).toFixed(1);
+        document.getElementById('val_flu').innerText = (f * 0.2).toFixed(1);
+        document.getElementById('val_vocab').innerText = (v * 0.2).toFixed(1);
+        document.getElementById('val_pron').innerText = (p * 0.2).toFixed(1);
+        document.getElementById('val_gram').innerText = (g * 0.2).toFixed(1);
+
+        const totalScore = (c + f + v + p + g) / 5;
+        document.getElementById('nclTotalScoreDisplay').innerText = totalScore.toFixed(0);
+        return totalScore;
+    }
+
+    function loadNclAssessmentData() {
+        const studentName = document.getElementById('nclStudentSelect').value;
+        const sectorName = document.getElementById('nclSectorSelect').value;
+        document.getElementById('nclStudentDisplayName').innerText = `${studentName} - [${sectorName}]`;
+
+        const key = `${studentName}_${sectorName}`;
+        const savedData = nclPracticalStore[key];
+
+        if(savedData) {
+            document.getElementById('score_comp').value = savedData.comp || 3;
+            document.getElementById('score_flu').value = savedData.flu || 3;
+            document.getElementById('score_vocab').value = savedData.vocab || 3;
+            document.getElementById('score_pron').value = savedData.pron || 3;
+            document.getElementById('score_gram').value = savedData.gram || 3;
+            document.getElementById('nclNotesInput').value = savedData.notes || '';
+            document.getElementById('nclGroupInput').value = savedData.group || 'Fl-414';
+        } else {
+            document.getElementById('score_comp').value = 3;
+            document.getElementById('score_flu').value = 3;
+            document.getElementById('score_vocab').value = 3;
+            document.getElementById('score_pron').value = 3;
+            document.getElementById('score_gram').value = 3;
+            document.getElementById('nclNotesInput').value = '';
+        }
+        calculateNclTotal();
+    }
+
+    function saveNclAssessmentData() {
+        const studentName = document.getElementById('nclStudentSelect').value;
+        const sectorName = document.getElementById('nclSectorSelect').value;
+        const key = `${studentName}_${sectorName}`;
+
+        const totalVal = calculateNclTotal();
+
+        nclPracticalStore[key] = {
+            student: studentName,
+            sector: sectorName,
+            group: document.getElementById('nclGroupInput').value,
+            comp: document.getElementById('score_comp').value,
+            flu: document.getElementById('score_flu').value,
+            vocab: document.getElementById('score_vocab').value,
+            pron: document.getElementById('score_pron').value,
+            gram: document.getElementById('score_gram').value,
+            totalScore: totalVal,
+            notes: document.getElementById('nclNotesInput').value
+        };
+
+        localStorage.setItem('bp3mi_ncl_practical_v22', JSON.stringify(nclPracticalStore));
+
+        const sIdx = students.indexOf(studentName);
+        if (sIdx !== -1 && sectorsMaster.some(s => s.name === sectorName)) {
+            if (!growthStore[sectorName]) growthStore[sectorName] = {};
+            if (!growthStore[sectorName][sIdx]) growthStore[sectorName][sIdx] = { pre: 0, post: 0, direct: 0 };
+            growthStore[sectorName][sIdx].direct = totalVal;
+            localStorage.setItem('bp3mi_growth_store_v22', JSON.stringify(growthStore));
+            renderIndividualTranscript();
+            renderCertificateView();
+        }
+
+        alert(`🔒 Rubrik NCL untuk "${studentName}" pada modul "${sectorName}" telah tersimpan permanen!`);
+    }
+
+    function exportNclToWord() {
+        const studentName = document.getElementById('nclStudentSelect').value;
+        const sectorName = document.getElementById('nclSectorSelect').value;
+        const grp = document.getElementById('nclGroupInput').value;
+        const totalScore = document.getElementById('nclTotalScoreDisplay').innerText;
+        const notes = document.getElementById('nclNotesInput').value || '-';
+
+        let content = `
+            <h2>Assessment of Conversational English (ala NCL)</h2>
+            <p><strong>Nama Peserta Perawat:</strong> ${studentName}</p>
+            <p><strong>Kompetensi Yang Diujikan:</strong> ${sectorName}</p>
+            <p><strong>Group / Kelas:</strong> ${grp}</p>
+            <p><strong>Total Nilai Akhir (Skala 100):</strong> <span style="font-size:14pt; color:#065f46; font-weight:bold;">${totalScore} / 100</span></p>
+
+            <table border="1" style="border-collapse:collapse; width:100%; font-size:10pt;">
+                <thead>
+                    <tr style="background-color:#f2f2f2;">
+                        <th>Proficiencies / Segi Kompetensi</th>
+                        <th>Bobot (%)</th>
+                        <th>Skor Diberikan (1-5)</th>
+                        <th>Nilai Kontribusi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1. Comprehension</td>
+                        <td style="text-align:center;">20%</td>
+                        <td style="text-align:center;">${document.getElementById('score_comp').value}</td>
+                        <td style="text-align:center;">${document.getElementById('val_comp').innerText}</td>
+                    </tr>
+                    <tr>
+                        <td>2. Fluency</td>
+                        <td style="text-align:center;">20%</td>
+                        <td style="text-align:center;">${document.getElementById('score_flu').value}</td>
+                        <td style="text-align:center;">${document.getElementById('val_flu').innerText}</td>
+                    </tr>
+                    <tr>
+                        <td>3. Vocabulary</td>
+                        <td style="text-align:center;">20%</td>
+                        <td style="text-align:center;">${document.getElementById('score_vocab').value}</td>
+                        <td style="text-align:center;">${document.getElementById('val_vocab').innerText}</td>
+                    </tr>
+                    <tr>
+                        <td>4. Pronunciation</td>
+                        <td style="text-align:center;">20%</td>
+                        <td style="text-align:center;">${document.getElementById('score_pron').value}</td>
+                        <td style="text-align:center;">${document.getElementById('val_pron').innerText}</td>
+                    </tr>
+                    <tr>
+                        <td>5. Grammar</td>
+                        <td style="text-align:center;">20%</td>
+                        <td style="text-align:center;">${document.getElementById('score_gram').value}</td>
+                        <td style="text-align:center;">${document.getElementById('val_gram').innerText}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Notes / Catatan Evaluator:</strong><br>${notes}</p>
+        `;
+
+        downloadWordDocument(`NCL_Assessment_${studentName.replace(/ /g, '_')}.doc`, content);
+    }
+
+    function calculateRemainingJpl() {
+        let totalCompletedJpl = 0;
+        let systemCurrentDate = new Date();
+
+        computedSchedule.forEach(item => {
+            if (item.dateObj <= systemCurrentDate) {
+                let isLocked = journalLockedStates[`day_${item.dayNum}`] !== undefined ? journalLockedStates[`day_${item.dayNum}`] : true;
+                if (isLocked) totalCompletedJpl += item.jpl;
+            }
+        });
+
+        let remaining = 640 - totalCompletedJpl;
+        if(remaining < 0) remaining = 0;
+        const elem = document.getElementById('displayRemainingJpl');
+        if(elem) elem.innerText = `${remaining} JPL`;
+    }
+
+    function generateMasterKurikulumTable() {
+        generateCustomSchedule();
+        const tbody = document.getElementById('masterKurikulumTableBody');
+        if(!tbody) return;
+        tbody.innerHTML = "";
+
+        let systemCurrentDate = new Date();
+        systemCurrentDate.setHours(0,0,0,0);
+
+        computedSchedule.forEach(item => {
+            let cellDateNormalized = new Date(item.dateObj);
+            cellDateNormalized.setHours(0,0,0,0);
+
+            let isPastDate = cellDateNormalized < systemCurrentDate;
+            let statusBadge = isPastDate 
+                ? `<span style="background:#fee2e2; color:#991b1b; padding:2px 6px; border-radius:3px; font-size:0.7rem; font-weight:bold;">CLOSED (<strong>${item.cumulative} JPL</strong>)</span>` 
+                : `<span style="background:#d1fae5; color:#065f46; padding:2px 6px; border-radius:3px; font-size:0.7rem; font-weight:bold;">LIVE (<strong>${item.cumulative} JPL</strong>)</span>`;
+
+            let currentCustomSec = customSectorsStore[`day_${item.dayNum}`] || item.sector;
+            let currentSubVal = subTopicsStore[`day_${item.dayNum}`] || item.subTopic || '';
+
+            let sectorOptionsHtml = "";
+            sectorsMaster.forEach(s => {
+                let sel = (s.name === currentCustomSec) ? 'selected' : '';
+                sectorOptionsHtml += `<option value="${s.name}" ${sel}>${s.name}</option>`;
+            });
+
+            let selDrama = (currentCustomSec === "English Drama Presentation") ? 'selected' : '';
+            sectorOptionsHtml += `<option value="English Drama Presentation" ${selDrama}>English Drama Presentation</option>`;
+
+            let isDisabledField = !isOperatorUnlocked;
+            let rowStyle = item.isSunday ? 'background-color: #f0fdf4;' : '';
+
+            tbody.innerHTML += `
+                <tr style="${rowStyle}">
+                    <td style="text-align:center; font-weight:bold;">${item.dayNum}</td>
+                    <td>${item.dateStr}</td>
+                    <td><strong>${item.dayName}</strong></td>
+                    <td>
+                        <select id="master_sector_${item.dayNum}" ${isDisabledField ? 'disabled' : ''} style="width:100%; padding:4px; font-size:0.78rem; border:1px solid #cbd5e1; border-radius:3px; background:${isDisabledField ? '#f8fafc' : '#fff'};" onchange="liveSyncSector(${item.dayNum}, this.value)">
+                            ${sectorOptionsHtml}
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" id="sub_input_${item.dayNum}" value="${currentSubVal}" placeholder="Enter sub-topic..." ${isDisabledField ? 'disabled' : ''} style="width:100%; padding:4px; font-size:0.78rem; border:1px solid #cbd5e1; border-radius:3px; background:${isDisabledField ? '#f8fafc' : '#fff'};" oninput="liveSyncSubTopic(${item.dayNum}, this.value)">
+                    </td>
+                    <td style="text-align:center;">
+                        <button type="button" class="btn-save-sub" onclick="saveSingleMasterRow(${item.dayNum})" ${isDisabledField ? 'disabled' : ''}>Save</button>
+                    </td>
+                    <td style="text-align:center; color:${item.isSunday ? '#0d9488' : '#047857'}; font-weight:bold;" id="jpl_cell_${item.dayNum}">${item.jpl} JPL</td>
+                    <td style="text-align:center;">
+                        ${statusBadge}
+                    </td>
+                </tr>
+            `;
+        });
+
+        calculateRemainingJpl();
+    }
+
+    function liveSyncSector(dayNum, val) {
+        customSectorsStore[`day_${dayNum}`] = val;
+        localStorage.setItem('bp3mi_custom_sectors_v22', JSON.stringify(customSectorsStore));
+        syncCompletedDaysFromMaster();
+    }
+
+    function liveSyncSubTopic(dayNum, val) {
+        subTopicsStore[`day_${dayNum}`] = val;
+        localStorage.setItem('bp3mi_subtopics_v22', JSON.stringify(subTopicsStore));
+        syncCompletedDaysFromMaster();
+    }
+
+    function saveSingleMasterRow(dayNum) {
+        const sectorElem = document.getElementById(`master_sector_${dayNum}`);
+        const inputElem = document.getElementById(`sub_input_${dayNum}`);
+        if(!sectorElem || !inputElem) return;
+
+        let secVal = sectorElem.value;
+        let subVal = inputElem.value.trim();
+
+        if(!subVal) {
+            alert("Sub-Pokok Bahasan tidak boleh kosong sebelum disimpan!");
+            return;
+        }
+
+        customSectorsStore[`day_${dayNum}`] = secVal;
+        subTopicsStore[`day_${dayNum}`] = subVal;
+        journalLockedStates[`day_${dayNum}`] = true;
+
+        localStorage.setItem('bp3mi_custom_sectors_v22', JSON.stringify(customSectorsStore));
+        localStorage.setItem('bp3mi_subtopics_v22', JSON.stringify(subTopicsStore));
+        localStorage.setItem('bp3mi_journal_locks_v22', JSON.stringify(journalLockedStates));
+        syncCompletedDaysFromMaster();
+
+        alert(`Hari ke-${dayNum} berhasil disimpan dan dikunci permanen.`);
+        generateMasterKurikulumTable();
+        renderJournalTable();
+    }
+
+    function saveAllMasterData() {
+        if(!isOperatorUnlocked) {
+            alert("Buka akses operator terlebih dahulu!");
+            return;
+        }
+
+        computedSchedule.forEach(item => {
+            const sectorElem = document.getElementById(`master_sector_${item.dayNum}`);
+            const inputElem = document.getElementById(`sub_input_${item.dayNum}`);
+
+            if(sectorElem && inputElem && !sectorElem.disabled) {
+                customSectorsStore[`day_${item.dayNum}`] = sectorElem.value;
+                if(inputElem.value.trim() !== '') subTopicsStore[`day_${item.dayNum}`] = inputElem.value.trim();
+                journalLockedStates[`day_${item.dayNum}`] = true;
+            }
+        });
+
+        localStorage.setItem('bp3mi_custom_sectors_v22', JSON.stringify(customSectorsStore));
+        localStorage.setItem('bp3mi_subtopics_v22', JSON.stringify(subTopicsStore));
+        localStorage.setItem('bp3mi_journal_locks_v22', JSON.stringify(journalLockedStates));
+        syncCompletedDaysFromMaster();
+
+        alert("Semua data master berhasil disimpan dan dikunci permanen!");
+        generateMasterKurikulumTable();
+        renderJournalTable();
+    }
+
+    function renderJournalTable() {
+        const tbody = document.getElementById('journalTableBody');
+        if(!tbody) return;
+        tbody.innerHTML = "";
+
+        syncCompletedDaysFromMaster();
+        const keys = Object.keys(completedDaysStore).sort((a,b) => parseInt(a.replace('day_','')) - parseInt(b.replace('day_','')));
+
+        if(keys.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding:15px; color:#64748b;">Belum ada Jurnal KBM tersimpan.</td></tr>`;
+            return;
+        }
+
+        keys.forEach((k) => {
+            const item = completedDaysStore[k];
+            let dayNum = item.day;
+            let isLocked = journalLockedStates[k] !== undefined ? journalLockedStates[k] : true;
+
+            if (isLocked) {
+                tbody.innerHTML += `
+                    <tr>
+                        <td style="text-align:center; font-weight:bold;">${item.day}</td>
+                        <td>${item.dateStr}</td>
+                        <td><strong>${item.dayName}</strong></td>
+                        <td>${item.sector}</td>
+                        <td>${item.subTopic}</td>
+                        <td style="text-align:center; color:#dc2626; font-weight:bold;">${item.jpl} JPL</td>
+                        <td style="text-align:center;"><span style="background:#fee2e2; color:#991b1b; padding:3px 8px; border-radius:4px; font-size:0.72rem; font-weight:bold;">CLOSED (${item.cumulative} JPL)</span></td>
+                        <td style="text-align:center;">
+                            <button type="button" class="btn-edit-journal" onclick="enableJournalEdit(${dayNum})" ${isOperatorUnlocked ? '' : 'disabled'}>Edit</button>
+                            <button type="button" class="btn-save-journal" disabled style="opacity:0.4; cursor:not-allowed;">Save</button>
+                        </td>
+                    </tr>
+                `;
+            } else {
+                let sectorOptionsHtml = "";
+                sectorsMaster.forEach(s => {
+                    let sel = (s.name === item.sector) ? 'selected' : '';
+                    sectorOptionsHtml += `<option value="${s.name}" ${sel}>${s.name}</option>`;
+                });
+                let selDrama = (item.sector === "English Drama Presentation") ? 'selected' : '';
+                sectorOptionsHtml += `<option value="English Drama Presentation" ${selDrama}>English Drama Presentation</option>`;
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td style="text-align:center; font-weight:bold;">${item.day}</td>
+                        <td>${item.dateStr}</td>
+                        <td><strong>${item.dayName}</strong></td>
+                        <td><select id="journal_sector_${dayNum}" style="width:100%; padding:4px; font-size:0.78rem; border:1px solid #cbd5e1; border-radius:3px; background:#fff;">${sectorOptionsHtml}</select></td>
+                        <td><input type="text" id="journal_sub_${dayNum}" value="${item.subTopic}" style="width:100%; padding:4px; font-size:0.78rem; border:1px solid #cbd5e1; border-radius:3px; background:#fff;"></td>
+                        <td style="text-align:center; color:#dc2626; font-weight:bold;">${item.jpl} JPL</td>
+                        <td style="text-align:center;"><span style="background:#fef3c7; color:#b45309; padding:3px 8px; border-radius:4px; font-size:0.72rem; font-weight:bold;">EDITING</span></td>
+                        <td style="text-align:center;">
+                            <button type="button" class="btn-edit-journal" disabled style="opacity:0.4; cursor:not-allowed;">Edit</button>
+                            <button type="button" class="btn-save-journal" onclick="saveJournalEdit('${k}', ${dayNum})">Save</button>
+                        </td>
+                    </tr>
+                `;
+            }
+        });
+        calculateRemainingJpl();
+    }
+
+    function enableJournalEdit(dayNum) {
+        if(!isOperatorUnlocked) {
+            alert("Buka akses operator terlebih dahulu dengan kata sandi!");
+            return;
+        }
+        journalLockedStates[`day_${dayNum}`] = false;
+        localStorage.setItem('bp3mi_journal_locks_v22', JSON.stringify(journalLockedStates));
+        renderJournalTable();
+        generateMasterKurikulumTable();
+    }
+
+    function saveJournalEdit(key, dayNum) {
+        if(!isOperatorUnlocked) {
+            alert("Buka akses operator terlebih dahulu!");
+            return;
+        }
+        const inputElem = document.getElementById(`journal_sub_${dayNum}`);
+        const selectElem = document.getElementById(`journal_sector_${dayNum}`);
+        if(!inputElem || !selectElem) return;
+
+        let val = inputElem.value.trim();
+        let secVal = selectElem.value;
+        if(!val) {
+            alert("Sub-Pokok Bahasan tidak boleh kosong!");
+            return;
+        }
+
+        subTopicsStore[key] = val;
+        customSectorsStore[key] = secVal;
+        journalLockedStates[key] = true;
+
+        localStorage.setItem('bp3mi_subtopics_v22', JSON.stringify(subTopicsStore));
+        localStorage.setItem('bp3mi_custom_sectors_v22', JSON.stringify(customSectorsStore));
+        localStorage.setItem('bp3mi_journal_locks_v22', JSON.stringify(journalLockedStates));
+        syncCompletedDaysFromMaster();
+
+        alert(`Koreksi Jurnal KBM Hari ke-${dayNum} berhasil disimpan!`);
+        renderJournalTable();
+        generateMasterKurikulumTable();
+    }
+
+    function buildLiveRoster() {
+        const select = document.getElementById('liveSector');
+        select.innerHTML = "";
+        sectorsMaster.forEach(sec => {
+            const opt = document.createElement('option');
+            opt.value = sec.name;
+            opt.text = `${sec.name} (${sec.totalJpl} JPL)`;
+            if(sec.name === activeCurrentSector) opt.selected = true;
+            select.appendChild(opt);
+        });
+        select.innerHTML += `<option value="English Drama Presentation">English Drama Presentation (Minggu)</option>`;
+        
+        updateInstructorDisplay(activeCurrentSector);
+
+        const tbody = document.getElementById('liveRosterBody');
+        tbody.innerHTML = "";
+
+        students.forEach((name, idx) => {
+            let savedPhone = studentPhones[idx] || '';
+            tbody.innerHTML += `
+                <tr>
+                    <td class="student-number">${idx + 1}</td>
+                    <td class="student-name">${name}</td>
+                    <td>
+                        <input type="text" class="phone-input" id="phone_${idx}" value="${savedPhone}" placeholder="08xx-xxxx-xxxx" oninput="saveStudentPhone(${idx}, this.value)">
+                    </td>
+                    <td class="checkbox-center"><input type="checkbox" class="attendance-checkbox" checked id="chk_${idx}"></td>
+                    <td class="sig-cell">
+                        <canvas id="canvas_${idx}" class="individual-canvas"></canvas>
+                        <div class="btn-action-group">
+                            <button type="button" class="btn-sig-save" onclick="saveIndividualSig(${idx})">Save</button>
+                            <button type="button" class="btn-sig-edit" onclick="editIndividualSig(${idx})">Edit</button>
+                            <button type="button" class="btn-sig-clear" onclick="clearIndividualSig(${idx})">Clear</button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        });
+
+        setTimeout(() => {
+            students.forEach((_, idx) => initCanvas(idx));
+        }, 50);
+    }
+
+    function saveStudentPhone(idx, phoneVal) {
+        studentPhones[idx] = phoneVal.trim();
+        localStorage.setItem('bp3mi_student_phones_v22', JSON.stringify(studentPhones));
+        
+        // Sync phone inputs in other active rendered views
+        const scorePhoneInput = document.getElementById(`score_phone_${idx}`);
+        if (scorePhoneInput) {
+            scorePhoneInput.value = phoneVal.trim();
+        }
+
+        updateOperatorReviewStatus();
+        renderIndividualTranscript();
+    }
+
+    function initCanvas(idx) {
+        const canvas = document.getElementById(`canvas_${idx}`);
+        if(!canvas) return;
+        const ctx = canvas.getContext('2d');
+        canvas.width = 150;
+        canvas.height = 50;
+        ctx.strokeStyle = '#000000';
+        ctx.lineWidth = 1.5;
+
+        if(individualSignatures[idx]) {
+            let img = new Image();
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0);
+            };
+            img.src = individualSignatures[idx];
+        }
+
+        let isDrawing = false;
+        function getCoordinates(e, canvasElem) {
+            const rect = canvasElem.getBoundingClientRect();
+            let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            let clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return { x: clientX - rect.left, y: clientY - rect.top };
+        }
+
+        canvas.onmousedown = (e) => { isDrawing = true; const pos = getCoordinates(e, canvas); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); };
+        canvas.onmousemove = (e) => { if(!isDrawing) return; const pos = getCoordinates(e, canvas); ctx.lineTo(pos.x, pos.y); ctx.stroke(); };
+        canvas.onmouseup = () => { isDrawing = false; };
+        canvas.onmouseleave = () => { isDrawing = false; };
+
+        canvas.ontouchstart = (e) => { e.preventDefault(); isDrawing = true; const pos = getCoordinates(e, canvas); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); };
+        canvas.ontouchmove = (e) => { e.preventDefault(); if(!isDrawing) return; const pos = getCoordinates(e, canvas); ctx.lineTo(pos.x, pos.y); ctx.stroke(); };
+        canvas.ontouchend = () => { isDrawing = false; };
+    }
+
+    function saveIndividualSig(idx) {
+        const canvas = document.getElementById(`canvas_${idx}`);
+        if(!canvas) return;
+        const dataUrl = canvas.toDataURL();
+        individualSignatures[idx] = dataUrl;
+        localStorage.setItem('bp3mi_indiv_sigs_v22', JSON.stringify(individualSignatures));
+        updateOperatorReviewStatus();
+        alert(`Tanda tangan peserta nomor ${idx + 1} (${students[idx]}) berhasil disimpan!`);
+    }
+
+    function editIndividualSig(idx) {
+        alert(`Tanda tangan peserta nomor ${idx + 1} dibuka untuk diedit. Silakan tanda tangani ulang lalu tekan Save.`);
+        updateOperatorReviewStatus();
+    }
+
+    function clearIndividualSig(idx) {
+        const canvas = document.getElementById(`canvas_${idx}`);
+        if(!canvas) return;
+        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+        delete individualSignatures[idx];
+        localStorage.setItem('bp3mi_indiv_sigs_v22', JSON.stringify(individualSignatures));
+        updateOperatorReviewStatus();
+        alert(`Tanda tangan peserta nomor ${idx + 1} dikosongkan.`);
+    }
+
+    function renderScoreRecapTable() {
+        const select = document.getElementById('scoreRecapSectorSelect');
+        const tbody = document.getElementById('scoreRecapRosterBody');
+        if(!select || !tbody) return;
+
+        const currentSec = select.value;
+        tbody.innerHTML = "";
+
+        if(!scoreRecapStore[currentSec]) scoreRecapStore[currentSec] = {};
+
+        students.forEach((name, idx) => {
+            let studentData = scoreRecapStore[currentSec][idx] || { score: '', sig: '' };
+            let phoneVal = studentPhones[idx] || '';
+
+            tbody.innerHTML += `
+                <tr>
+                    <td class="student-number">${idx + 1}</td>
+                    <td class="student-name">${name}</td>
+                    <td>
+                        <input type="text" class="phone-input" id="score_phone_${idx}" value="${phoneVal}" placeholder="08xx-xxxx-xxxx" oninput="saveStudentPhone(${idx}, this.value)">
+                    </td>
+                    <td style="text-align:center;">
+                        <input type="number" min="0" max="100" class="score-input" id="score_${currentSec}_${idx}" value="${studentData.score}" placeholder="0-100" oninput="saveSingleScore('${currentSec}', ${idx}, this.value)">
+                    </td>
+                    <td class="sig-cell">
+                        <canvas id="score_canvas_${currentSec}_${idx}" class="individual-canvas"></canvas>
+                        <div class="btn-action-group">
+                            <button type="button" class="btn-sig-save" onclick="saveScoreSig('${currentSec}', ${idx})">Save</button>
+                            <button type="button" class="btn-sig-edit" onclick="editScoreSig('${currentSec}', ${idx})">Edit</button>
+                            <button type="button" class="btn-sig-clear" onclick="clearScoreSig('${currentSec}', ${idx})">Clear</button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        });
+
+        setTimeout(() => {
+            students.forEach((_, idx) => initScoreCanvas(currentSec, idx));
+        }, 50);
+    }
+
+    function initScoreCanvas(sectorName, idx) {
+        const canvas = document.getElementById(`score_canvas_${sectorName}_${idx}`);
+        if(!canvas) return;
+        const ctx = canvas.getContext('2d');
+        canvas.width = 150;
+        canvas.height = 50;
+        ctx.strokeStyle = '#000000';
+        ctx.lineWidth = 1.5;
+
+        if(!scoreRecapStore[sectorName]) scoreRecapStore[sectorName] = {};
+        if(!scoreRecapStore[sectorName][idx]) scoreRecapStore[sectorName][idx] = { score: '', sig: '' };
+
+        if(scoreRecapStore[sectorName][idx].sig) {
+            let img = new Image();
+            img.onload = function() { ctx.drawImage(img, 0, 0); };
+            img.src = scoreRecapStore[sectorName][idx].sig;
+        }
+
+        let isDrawing = false;
+        function getCoordinates(e, canvasElem) {
+            const rect = canvasElem.getBoundingClientRect();
+            let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            let clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return { x: clientX - rect.left, y: clientY - rect.top };
+        }
+
+        canvas.onmousedown = (e) => { isDrawing = true; const pos = getCoordinates(e, canvas); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); };
+        canvas.onmousemove = (e) => { if(!isDrawing) return; const pos = getCoordinates(e, canvas); ctx.lineTo(pos.x, pos.y); ctx.stroke(); };
+        canvas.onmouseup = () => { isDrawing = false; };
+        canvas.onmouseleave = () => { isDrawing = false; };
+
+        canvas.ontouchstart = (e) => { e.preventDefault(); isDrawing = true; const pos = getCoordinates(e, canvas); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); };
+        canvas.ontouchmove = (e) => { e.preventDefault(); if(!isDrawing) return; const pos = getCoordinates(e, canvas); ctx.lineTo(pos.x, pos.y); ctx.stroke(); };
+        canvas.ontouchend = () => { isDrawing = false; };
+    }
+
+    function saveSingleScore(sectorName, idx, val) {
+        if(!scoreRecapStore[sectorName]) scoreRecapStore[sectorName] = {};
+        if(!scoreRecapStore[sectorName][idx]) scoreRecapStore[sectorName][idx] = { score: '', sig: '' };
+        scoreRecapStore[sectorName][idx].score = val;
+
+        if (sectorsMaster.some(s => s.name === sectorName)) {
+            if (!growthStore[sectorName]) growthStore[sectorName] = {};
+            if (!growthStore[sectorName][idx]) growthStore[sectorName][idx] = { pre: 0, post: 0, direct: 0 };
+            growthStore[sectorName][idx].post = parseFloat(val) || 0;
+            localStorage.setItem('bp3mi_growth_store_v22', JSON.stringify(growthStore));
+            renderIndividualTranscript();
+            renderCertificateView();
+        }
+    }
+
+    function saveScoreSig(sectorName, idx) {
+        const canvas = document.getElementById(`score_canvas_${sectorName}_${idx}`);
+        if(!canvas) return;
+        if(!scoreRecapStore[sectorName]) scoreRecapStore[sectorName] = {};
+        if(!scoreRecapStore[sectorName][idx]) scoreRecapStore[sectorName][idx] = { score: '', sig: '' };
+        scoreRecapStore[sectorName][idx].sig = canvas.toDataURL();
+        localStorage.setItem('bp3mi_score_recap_v22', JSON.stringify(scoreRecapStore));
+        alert(`Tanda tangan ujian untuk peserta nomor ${idx + 1} berhasil disimpan!`);
+    }
+
+    function editScoreSig(sectorName, idx) {
+        alert(`Tanda tangan ujian peserta nomor ${idx + 1} dibuka untuk diedit.`);
+    }
+
+    function clearScoreSig(sectorName, idx) {
+        const canvas = document.getElementById(`score_canvas_${sectorName}_${idx}`);
+        if(canvas) {
+            canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+            if(scoreRecapStore[sectorName] && scoreRecapStore[sectorName][idx]) {
+                scoreRecapStore[sectorName][idx].sig = "";
+                localStorage.setItem('bp3mi_score_recap_v22', JSON.stringify(scoreRecapStore));
+            }
+        }
+    }
+
+    function saveScoreRecapData() {
+        const select = document.getElementById('scoreRecapSectorSelect');
+        if(!select) return;
+        const currentSec = select.value;
+
+        students.forEach((_, idx) => {
+            const scoreInput = document.getElementById(`score_${currentSec}_${idx}`);
+            if(scoreInput) {
+                if(!scoreRecapStore[currentSec]) scoreRecapStore[currentSec] = {};
+                if(!scoreRecapStore[currentSec][idx]) scoreRecapStore[currentSec][idx] = { score: '', sig: '' };
+                scoreRecapStore[currentSec][idx].score = scoreInput.value;
+
+                if (sectorsMaster.some(s => s.name === currentSec)) {
+                    if (!growthStore[currentSec]) growthStore[currentSec] = {};
+                    if (!growthStore[currentSec][idx]) growthStore[currentSec][idx] = { pre: 0, post: 0, direct: 0 };
+                    growthStore[currentSec][idx].post = parseFloat(scoreInput.value) || 0;
+                }
+            }
+        });
+
+        localStorage.setItem('bp3mi_score_recap_v22', JSON.stringify(scoreRecapStore));
+        localStorage.setItem('bp3mi_growth_store_v22', JSON.stringify(growthStore));
+        renderIndividualTranscript();
+        renderCertificateView();
+        alert(`🔒 Rekap nilai ujian untuk modul "${currentSec}" tersimpan permanen!`);
+    }
+
+    function unlockOperatorMode() {
+        const inputPwd = prompt("Masukkan Kata Sandi Operator:");
+        if(inputPwd === "Fakinah_1") {
+            isOperatorUnlocked = true;
+            const liveSectorSelect = document.getElementById('liveSector');
+            liveSectorSelect.disabled = false;
+            liveSectorSelect.style.background = '#ffffff';
+
+            document.getElementById('operatorReviewPanel').style.display = 'block';
+            document.getElementById('operatorLockBanner').style.background = '#d1fae5';
+            document.getElementById('operatorLockBanner').innerHTML = '<div><strong>✅ Akses Operator Aktif</strong></div>';
+            
+            updateOperatorReviewStatus();
+            generateMasterKurikulumTable();
+            renderJournalTable();
+            alert("Akses operator dibuka sepenuhnya!");
+        } else if(inputPwd !== null) {
+            alert("Kata sandi salah!");
+        }
+    }
+
+    function updateOperatorReviewStatus() {
+        if(!isOperatorUnlocked) return;
+        const grid = document.getElementById('reviewStatusGrid');
+        if(!grid) return;
+        grid.innerHTML = "";
+
+        students.forEach((name, idx) => {
+            const phoneVal = studentPhones[idx] || 'Belum diisi';
+            let isSigned = individualSignatures[idx] ? true : false;
+            let imgData = individualSignatures[idx] || "";
+
+            grid.innerHTML += `
+                <div style="padding:6px; border:1px solid #cbd5e1; border-radius:4px; background:white;">
+                    <div><strong>${idx + 1}. ${name}</strong></div>
+                    <div style="font-size:0.75rem; color:#475569;">📞 HP: ${phoneVal}</div>
+                    <div style="font-size:0.75rem;">Status: ${isSigned ? '<span style="color:#059669">✔ Tersimpan</span>' : '<span style="color:#dc2626">Belum Disimpan</span>'}</div>
+                    ${imgData ? `<img src="${imgData}" style="max-height:25px; display:block; margin-top:2px;">` : ''}
+                </div>
+            `;
+        });
+    }
+
+    function saveAndRecordSession() {
+        const currentDate = new Date().toISOString().split('T')[0];
+        const sectorVal = document.getElementById('liveSector').value;
+        const key = `${currentDate}_${sectorVal}`;
+
+        let studentLogs = {};
+        students.forEach((name, idx) => {
+            const chk = document.getElementById(`chk_${idx}`);
+            studentLogs[idx] = {
+                name: name,
+                phone: studentPhones[idx] || '',
+                present: chk ? chk.checked : true,
+                sig: individualSignatures[idx] || ''
+            };
+        });
+
+        const sessionData = {
+            date: currentDate,
+            sectorInfo: sectorVal,
+            timeSlot: "08.00 - 16.30 WIB (10 JPL) / Minggu (5-6 JPL)",
+            students: studentLogs
+        };
+
+        recordedSessions[key] = sessionData;
+        localStorage.setItem('bp3mi_attendance_cloud_v22', JSON.stringify(recordedSessions));
+        alert("Sesi presensi dan tanda tangan berhasil di-save!");
+        renderMonthlyReport();
+    }
+
+    function switchView(mode) {
+        document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active-view'));
+        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+        const viewMap = {
+            'live': { view: 'viewLive', btn: 'btnLive', fn: buildLiveRoster },
+            'scoreRecap': { view: 'viewScoreRecap', btn: 'btnScoreRecap', fn: renderScoreRecapTable },
+            'practical': { view: 'viewPractical', btn: 'btnPractical', fn: loadNclAssessmentData },
+            'growth': { view: 'viewGrowth', btn: 'btnGrowth', fn: renderGrowthTable },
+            'transcript': { view: 'viewTranscript', btn: 'btnTranscript', fn: renderIndividualTranscript },
+            'certificate': { view: 'viewCertificate', btn: 'btnCertificate', fn: renderCertificateView },
+            'instCert': { view: 'viewInstCert', btn: 'btnInstCert', fn: renderInstructorCertificateView },
+            'weekly': { view: 'viewWeekly', btn: 'btnWeekly', fn: generateMasterKurikulumTable },
+            'journal': { view: 'viewJournal', btn: 'btnJournal', fn: renderJournalTable },
+            'monthly': { view: 'viewMonthly', btn: 'btnMonthly', fn: renderMonthlyReport }
+        };
+
+        if (viewMap[mode]) {
+            document.getElementById(viewMap[mode].view).classList.add('active-view');
+            document.getElementById(viewMap[mode].btn).classList.add('active');
+            if (viewMap[mode].fn) viewMap[mode].fn();
+        }
+    }
+
+    function renderMonthlyReport() {
+        const tbody = document.getElementById('monthlyRosterBody');
+        const jnlContainer = document.getElementById('monthlyJournalContainer');
+        const filterSelect = document.getElementById('filterMonthlySector');
+        
+        if(!tbody || !jnlContainer || !filterSelect) return;
+        
+        tbody.innerHTML = "";
+        jnlContainer.innerHTML = "<h4>📖 Ringkasan Jurnal Sesi Terekam</h4>";
+
+        let no = 1;
+        students.forEach((name, idx) => {
+            let phoneVal = studentPhones[idx] || 'Belum diisi';
+            let sigData = individualSignatures[idx] || '';
+            tbody.innerHTML += `
+                <tr>
+                    <td class="student-number">${no++}</td>
+                    <td><strong>${name}</strong></td>
+                    <td>${phoneVal}</td>
+                    <td class="checkbox-center"><span style="color:#059669; font-weight:bold;">Hadir</span></td>
+                    <td style="text-align:center;">${sigData ? `<img src="${sigData}" style="max-height:40px; display:block; margin:0 auto;">` : '<span style="color:#94a3b8; font-size:0.78rem;">- Belum Disimpan -</span>'}</td>
+                </tr>
+            `;
+        });
+    }
+
+    function downloadWordDocument(filename, contentHtml) {
+        const header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' " +
+            "xmlns:w='urn:schemas-microsoft-com:office:word' " +
+            "xmlns='http://www.w3.org/TR/REC-html40'>" +
+            "<head><meta charset='utf-8'><title>Export Document</title>" +
+            "<style>" +
+            "body { font-family: Arial, sans-serif; font-size: 11pt; }" +
+            "table { border-collapse: collapse; width: 100%; margin-top: 15px; }" +
+            "th, td { border: 1px solid #000; padding: 6px 8px; vertical-align: middle; text-align: left; }" +
+            "th { background-color: #f2f2f2; font-weight: bold; text-align: center; }" +
+            "h2, h3 { color: #1e3a8a; margin-bottom: 5px; }" +
+            "</style></head><body>";
+        const footer = "</body></html>";
+        const sourceHTML = header + contentHtml + footer;
+
+        const blob = new Blob(['\ufeff', sourceHTML], { type: 'application/msword' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
+    function exportScoreRecapToWord() {
+        const select = document.getElementById('scoreRecapSectorSelect');
+        if(!select) return;
+        const currentSec = select.value;
+        
+        let tableRows = "";
+        students.forEach((name, idx) => {
+            let studentData = (scoreRecapStore[currentSec] && scoreRecapStore[currentSec][idx]) ? scoreRecapStore[currentSec][idx] : { score: '', sig: '' };
+            let phoneVal = studentPhones[idx] || 'Belum diisi';
+            let sigImgHtml = studentData.sig ? `<img src="${studentData.sig}" width="120" height="40" />` : '- Belum TTD -';
+
+            tableRows += `
+                <tr>
+                    <td style="text-align:center;">${idx + 1}</td>
+                    <td>${name}</td>
+                    <td>${phoneVal}</td>
+                    <td style="text-align:center; font-weight:bold;">${studentData.score || '-'}</td>
+                    <td style="text-align:center;">${sigImgHtml}</td>
+                </tr>
+            `;
+        });
+
+        let content = `
+            <h2>BP3MI Aceh & AKPER Teungku Fakinah Banda Aceh</h2>
+            <h3>REKAPITULASI NILAI UJIAN & TANDA TANGAN PESERTA</h3>
+            <p><strong>Kompetensi / Modul:</strong> ${currentSec}</p>
+            <p><strong>Tanggal Unduh:</strong> ${new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' })}</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:35px;">No</th>
+                        <th>Nama Peserta Perawat</th>
+                        <th>No. HP / WhatsApp</th>
+                        <th style="width:100px;">Nilai Ujian</th>
+                        <th>Tanda Tangan Digital</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${tableRows}
+                </tbody>
+            </table>
+        `;
+
+        const filename = `Recap_Nilai_${currentSec.replace(/[^a-zA-Z0-9]/g, '_')}.doc`;
+        downloadWordDocument(filename, content);
+    }
+
+    function exportJournalToWord() {
+        syncCompletedDaysFromMaster();
+        const keys = Object.keys(completedDaysStore).sort((a,b) => parseInt(a.replace('day_','')) - parseInt(b.replace('day_','')));
+
+        let tableRows = "";
+        keys.forEach((k) => {
+            const item = completedDaysStore[k];
+            tableRows += `
+                <tr>
+                    <td style="text-align:center;">${item.day}</td>
+                    <td>${item.dateStr}</td>
+                    <td>${item.dayName}</td>
+                    <td>${item.sector}</td>
+                    <td>${item.subTopic}</td>
+                    <td style="text-align:center;">${item.jpl} JPL</td>
+                    <td style="text-align:center;">${item.cumulative} JPL</td>
+                </tr>
+            `;
+        });
+
+        let content = `
+            <h2>BP3MI Aceh & AKPER Fakinah Banda Aceh</h2>
+            <h3>DOKUMEN RESMI JURNAL KBM & PROGRESS KAPASITAS</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:35px;">Hari</th>
+                        <th>Tanggal</th>
+                        <th>Hari</th>
+                        <th>Kompetensi / Modul</th>
+                        <th>Sub-Pokok Bahasan (in English)</th>
+                        <th>JPL</th>
+                        <th>Akumulasi JPL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${tableRows}
+                </tbody>
+            </table>
+        `;
+
+        downloadWordDocument("Jurnal_KBM_Lengkap_BP3MI.doc", content);
+    }
+
+    function exportFullScheduleToWord() {
+        generateCustomSchedule();
+        let tableRows = "";
+
+        computedSchedule.forEach(item => {
+            let currentCustomSec = customSectorsStore[`day_${item.dayNum}`] || item.sector;
+            let currentSubVal = subTopicsStore[`day_${item.dayNum}`] || item.subTopic || '-';
+
+            tableRows += `
+                <tr>
+                    <td style="text-align:center;">${item.dayNum}</td>
+                    <td>${item.dateStr}</td>
+                    <td>${item.dayName}</td>
+                    <td>${currentCustomSec}</td>
+                    <td>${currentSubVal}</td>
+                    <td style="text-align:center;">${item.jpl} JPL</td>
+                    <td style="text-align:center;">${item.cumulative} JPL</td>
+                </tr>
+            `;
+        });
+
+        let content = `
+            <h2>BP3MI Aceh & AKPER Teungku Fakinah Banda Aceh</h2>
+            <h3>MASTER JADWAL KURIKULUM 640 JPL (27 AGUSTUS - 7 NOVEMBER 2026)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:35px;">Hari</th>
+                        <th>Tanggal</th>
+                        <th>Hari</th>
+                        <th>Kompetensi / Modul</th>
+                        <th>Sub-Pokok Bahasan (in English)</th>
+                        <th>JPL Harian</th>
+                        <th>Akumulasi JPL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${tableRows}
+                </tbody>
+            </table>
+        `;
+
+        downloadWordDocument("Master_Jadwal_Kurikulum_640JPL.doc", content);
+    }
+</script>
+
+</body>
+</html>
